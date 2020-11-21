@@ -1,0 +1,74 @@
+﻿@model PortariaInteligente.Models.Visitante
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4>Editar Visitante</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="VisitanteID" />
+            <div class="form-group">
+                <label asp-for="VisitanteNome" class="control-label"></label>
+                <input asp-for="VisitanteNome" class="form-control" />
+                <span asp-validation-for="VisitanteNome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VisitanteEmail" class="control-label"></label>
+                <input asp-for="VisitanteEmail" class="form-control" />
+                <span asp-validation-for="VisitanteEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VisitanteCel" class="control-label"></label>
+                <input asp-for="VisitanteCel" class="form-control" />
+                <span asp-validation-for="VisitanteCel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Empresa" class="control-label"></label>
+                <input asp-for="Empresa" class="form-control" />
+                <span asp-validation-for="Empresa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DocumentoID" class="control-label"></label>
+                <select asp-for="DocumentoID" class="form-control" asp-items="ViewBag.DocumentoID"></select>
+                <span asp-validation-for="DocumentoID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DocumentoNumero" class="control-label"></label>
+                <input asp-for="DocumentoNumero" class="form-control" />
+                <span asp-validation-for="DocumentoNumero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarroMarca" class="control-label"></label>
+                <input asp-for="CarroMarca" class="form-control" />
+                <span asp-validation-for="CarroMarca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarroCor" class="control-label"></label>
+                <input asp-for="CarroCor" class="form-control" />
+                <span asp-validation-for="CarroCor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarroModelo" class="control-label"></label>
+                <input asp-for="CarroModelo" class="form-control" />
+                <span asp-validation-for="CarroModelo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarroPlaca" class="control-label"></label>
+                <input asp-for="CarroPlaca" class="form-control" />
+                <span asp-validation-for="CarroPlaca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar para a Lista</a>
+</div>
+

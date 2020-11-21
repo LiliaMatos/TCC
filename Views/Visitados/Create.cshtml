@@ -1,0 +1,38 @@
+﻿@model PortariaInteligente.Models.Visitado
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Criar Novo Visitado</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="VisitadoNome" class="control-label"></label>
+                <input asp-for="VisitadoNome" class="form-control" />
+                <span asp-validation-for="VisitadoNome" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VisitadoEmail" class="control-label"></label>
+                <input asp-for="VisitadoEmail" class="form-control" />
+                <span asp-validation-for="VisitadoEmail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VisitadoCel" class="control-label"></label>
+                <input asp-for="VisitadoCel" class="form-control" />
+                <span asp-validation-for="VisitadoCel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Volta para a Lista</a>
+</div>
+
