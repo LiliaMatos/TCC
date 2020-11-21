@@ -50,7 +50,7 @@ namespace PortariaInteligente.Controllers
         public IActionResult Create()
         {
             ViewData["ReuniaoID"] = new SelectList(_context.Reunioes, "ReuniaoID", "ReuniaoNome");
-            ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "VisitanteNome");
+            ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "DocumentoNumero");
             return View();
         }
 
@@ -68,7 +68,7 @@ namespace PortariaInteligente.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ReuniaoID"] = new SelectList(_context.Reunioes, "ReuniaoID", "ReuniaoNome", convite.ReuniaoID);
-            ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "VisitanteNome", convite.VisitanteID);
+            ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "DocumentoNumero", convite.VisitanteID);
             return View(convite);
         }
 
@@ -86,7 +86,7 @@ namespace PortariaInteligente.Controllers
                 return NotFound();
             }
             ViewData["ReuniaoID"] = new SelectList(_context.Reunioes, "ReuniaoID", "ReuniaoNome", convite.ReuniaoID);
-            ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "VisitanteNome", convite.VisitanteID);
+            ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "DocumentoNumero", convite.VisitanteID);
             return View(convite);
         }
 
@@ -123,7 +123,7 @@ namespace PortariaInteligente.Controllers
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ReuniaoID"] = new SelectList(_context.Reunioes, "ReuniaoID", "ReuniaoNome", convite.ReuniaoID);
-            ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "VisitanteNome", convite.VisitanteID);
+            ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "DocumentoNumero", convite.VisitanteID);
             return View(convite);
         }
 

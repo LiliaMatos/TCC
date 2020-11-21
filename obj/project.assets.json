@@ -8782,11 +8782,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\source\\repos\\Portaria\\PortariaInteligente\\PortariaInteligente.csproj",
+      "projectUniqueName": "C:\\IES301\\PortariaInteligente.csproj",
       "projectName": "PortariaInteligente",
-      "projectPath": "C:\\source\\repos\\Portaria\\PortariaInteligente\\PortariaInteligente.csproj",
+      "projectPath": "C:\\IES301\\PortariaInteligente.csproj",
       "packagesPath": "C:\\Users\\Lília Matos\\.nuget\\packages\\",
-      "outputPath": "C:\\source\\repos\\Portaria\\PortariaInteligente\\obj\\",
+      "outputPath": "C:\\IES301\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
