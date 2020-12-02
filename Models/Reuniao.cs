@@ -7,6 +7,12 @@ namespace PortariaInteligente.Models
 {
     public class Reuniao
     {
+        public Reuniao()
+        {
+            Convites = new List<Convite>();
+            ReuniaoData = DateTime.Today;
+        }
+
         [Key]
         public int ReuniaoID { get; set; }
 
@@ -32,7 +38,7 @@ namespace PortariaInteligente.Models
         [Display(Name = "Sala")]
         public string ReuniaoSala { get; set; }
 
-        public virtual ICollection<Convite> Convites { get; set; }
+        public virtual IList<Convite> Convites { get; set; }
 
     }
 }

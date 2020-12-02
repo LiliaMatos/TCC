@@ -1,0 +1,83 @@
+﻿@model IEnumerable<PortariaInteligente.Models.Convite>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h4>Painel Portaria</h4>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-controller="Reunioes" asp-action="PainelPortaria">
+            <div class="form-group">
+                <label class="col-form-label">Data:</label>
+                <input type="date" name="data">
+                <input type="submit" value="Filtrar" />
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Visitante:</label>
+                <input type="text" name="visitante">
+                <input type="submit" value="Filtrar" />
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Organizador:</label>
+                <input type="text" name="visitado">
+                <input type="submit" value="Filtrar" />
+            </div>
+        </form>
+    </div>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Reunioes.ReuniaoHora)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reunioes.Visitados.VisitadoNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reunioes.Visitados.VisitadoCel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visitantes.VisitanteNome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Visitantes.Empresa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reunioes.ReuniaoNome)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reunioes.ReuniaoHora)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reunioes.Visitados.VisitadoNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reunioes.Visitados.VisitadoCel)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visitantes.VisitanteNome)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Visitantes.Empresa)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reunioes.ReuniaoNome)
+            </td>
+            <td>
+                <a asp-action="Confirmar" asp-route-id="@item.VisitanteID">Confirmar</a> |
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

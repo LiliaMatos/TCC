@@ -1,12 +1,10 @@
-﻿@using PortariaInteligente.Models;
-@model dynamic
-
+﻿@model PortariaInteligente.Models.Reuniao
 @{
     ViewData["Title"] = "Details";
 }
 
 
-<h4> Detalhes da Reunião </h4>
+<h4>Detalhes da Reunião </h4>
 
 <table class="table">
     <thead bgcolor="#F0F8FF">
@@ -26,48 +24,47 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (Reuniao a in Model.reuniao)
-        {
-        <tr>
-            <td>
-                @a.ReuniaoNome
-            </td>
-            <td>
-                @a.ReuniaoData
-            </td>
-            <td>
-                @a.ReuniaoHora
-            </td>
-            <td>
-                @a.VisitadoID
-            </td>
 
-        </tr>
-        }
-     </tbody>
+            <tr>
+                <td>
+                    @Html.DisplayFor(model => model.ReuniaoNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.ReuniaoData)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.ReuniaoHora)
+                </td>
+                <td>
+                    @Html.DisplayFor(model => model.Visitados.VisitadoNome)
+                </td>
+
+            </tr>
+       
+    </tbody>
     <thead bgcolor="#F0F8FF">
         <tr>
             <th>
                 Convidados
             </th>
             <th></th>
-            <th></th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (Convite p in Model.convites)
+        @foreach (Convite p in Model.Convites)
         {
             <tr>
                 <td>
-                    @p.VisitanteID
+                    @Html.DisplayFor(modelItem => p.Visitantes.VisitanteNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => p.Visitantes.VisitanteEmail)
                 </td>
             </tr>
         }
     </tbody>
- </table>
+</table>
 
 <div>
-    @*<a asp-action="Edit" asp-route-id="@Model.reuniao.">Edit</a> |*@
     <a asp-action="Index">Voltar para Lista</a>
 </div>

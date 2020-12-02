@@ -378,3 +378,4 @@ C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Convites\Delete.cshtml.g.cs
 C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Convites\Details.cshtml.g.cs
 C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Convites\Edit.cshtml.g.cs
 C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Convites\Index.cshtml.g.cs
+C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\PainelPortaria.cshtml.g.cs
