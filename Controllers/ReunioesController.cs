@@ -58,58 +58,63 @@ namespace PortariaInteligente.Controllers
             ViewData["VisitadoID"] = new SelectList(_context.Visitados, "VisitadoID", "VisitadoNome");
             return View(new Reuniao());
         }
-
+        
         // POST: Reunioes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ReuniaoID,VisitadoID,ReuniaoNome,ReuniaoData,ReuniaoHora,ReuniaoSala, Convites")] Reuniao reuniao)
         {
+            //Testa se a data é anterior a data atual para não permitir criação de reuniõe no passado, mas não está funcionando, o resultado dá sempre zero.
+
+            if (reuniao.ReuniaoData < DateTime.Today)
+                ModelState.AddModelError("ReuniaoData", "A data encontra-se no passado!");
+
             if (ModelState.IsValid)
             {
-                if (reuniao.Convites.Select(c=> c.VisitanteID).Distinct().Count() != reuniao.Convites.Count())
-                {
-                    ModelState.AddModelError("Convites[0].VisitanteID", "Já existe um convite para este visitante");
-                }
-                else 
-                {
                     _context.Add(reuniao);
                     int idReuniao = reuniao.ReuniaoID;
                     await _context.SaveChangesAsync();
-                    return RedirectToAction("Index");
-                }
+                    // return RedirectToAction("Index");
+                    return RedirectToAction("CreateConvites", new { ReuniaoID = reuniao.ReuniaoID});
+   
             }
-            ViewData["VisitanteID"] = new SelectList(_context.Visitantes.Select(x => new { 
-            x.VisitanteID, VisitanteNome = x.VisitanteNome + " - " +x.VisitanteEmail
-            }), "VisitanteID", "VisitanteNome");
             ViewData["VisitadoID"] = new SelectList(_context.Visitados, "VisitadoID", "VisitadoNome");
             return View(reuniao);
         }
-        // POST: Reunioes/AddConvite
+
+        // GET:  Reunioes/CreateConvites
+        public IActionResult CreateConvites(int ReuniaoID)
+        {
+           ViewData["ReuniaoID"] = new SelectList(_context.Reunioes, "ReuniaoID", "ReuniaoNome");
+           ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "VisitanteNome");
+           ViewData["Mensagem"] = TempData["Mensagem"];
+           return View(new Convite { ReuniaoID =  ReuniaoID});
+        }
+
+        // POST: Reunioes/CreateConvites
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddConvite([Bind("ReuniaoID,VisitadoID,ReuniaoNome,ReuniaoData,ReuniaoHora,ReuniaoSala, Convites")] Reuniao reuniao)
+        public async Task<IActionResult> CreateConvites([Bind("VisitanteID,ReuniaoID")] Convite convite)
         {
-            reuniao.Convites.Add(new Convite());
-
-            ViewData["VisitanteID"] = new SelectList(_context.Visitantes.Select(x => new {
-                x.VisitanteID,
-                VisitanteNome = x.VisitanteNome + " - " + x.VisitanteEmail
-            }), "VisitanteID", "VisitanteNome");
-
-            ViewData["VisitadoID"] = new SelectList(_context.Visitados, "VisitadoID", "VisitadoNome");
-
-            if (reuniao.ReuniaoID == 0)
+            if (ConviteExists(convite.VisitanteID + "_" + convite.ReuniaoID))
             {
-                return View(nameof(Create), reuniao);
+                ModelState.AddModelError("VisitanteID", "Já existe um convite para este visitante");
             }
-            else
+
+            else if (ModelState.IsValid)
             {
-                TempData["Model"] = reuniao;
-                return RedirectToAction(nameof(Edit), new { id = reuniao.ReuniaoID }) ;
-       
+                _context.Add(convite);
+                await _context.SaveChangesAsync();
+                //Depois de salvar retorna para o Index de Convites
+                TempData["Mensagem"] = "Convite adicionado.";
+                return RedirectToAction(nameof(CreateConvites), new {ReuniaoID = convite.ReuniaoID });
             }
-            
+            ViewData["ReuniaoID"] = new SelectList(_context.Reunioes, "ReuniaoID", "ReuniaoNome", convite.ReuniaoID);
+            ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "VisitanteNome", convite.VisitanteID);
+            //Faz o quê e quando?
+            return View(convite);
         }
+
 
         // GET: Reunioes/Edit/5
         public IActionResult Edit(int? id)
@@ -210,8 +215,8 @@ namespace PortariaInteligente.Controllers
         public async Task<IActionResult> PainelPortaria(DateTime data, string visitante, string visitado)
         {
 
-            var convites = from m in _context.Convites.Include("Visitantes").Include("Reunioes").Include("Visitados") select m ;
-            // where (s => s.ReuniaoData == DateTime.Today)
+            var convites = from m in _context.Convites.Include("Visitantes").Include("Reunioes").Include("Reunioes.Visitados") where  m.Reunioes.ReuniaoData == DateTime.Today && m.Confirmado == false select m ;
+                    
 
             if (data.Year != 0001)
             {
@@ -242,6 +247,157 @@ namespace PortariaInteligente.Controllers
                 FirstOrDefault(x => x.ReuniaoID == id);
             return (listaTodasReunioes);
         }
+        private bool ConviteExists(string id)
+        {
 
+            var chaves = id.Split("_");
+            var visitanteID = int.Parse(chaves[0]);
+            var reuniaoID = int.Parse(chaves[1]);
+
+            return _context.Convites.Any(e => e.ReuniaoID == reuniaoID && e.VisitanteID == visitanteID);
+        }
+
+
+        // POST: Reunioes/AddConvite
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddConvite([Bind("ReuniaoID,VisitadoID,ReuniaoNome,ReuniaoData,ReuniaoHora,ReuniaoSala, Convites")] Reuniao reuniao)
+        {
+            reuniao.Convites.Add(new Convite());
+
+            ViewData["VisitanteID"] = new SelectList(_context.Visitantes.Select(x => new {
+                x.VisitanteID,
+                VisitanteNome = x.VisitanteNome + " - " + x.VisitanteEmail
+            }), "VisitanteID", "VisitanteNome");
+
+            ViewData["VisitadoID"] = new SelectList(_context.Visitados, "VisitadoID", "VisitadoNome");
+
+            if (reuniao.ReuniaoID == 0)
+            {
+                return View(nameof(Create), reuniao);
+            }
+            else
+            {
+                TempData["Model"] = reuniao;
+                return RedirectToAction(nameof(CreateConvites), new { id = reuniao.ReuniaoID }) ;
+       
+            }
+            
+        }
+
+
+        // GET: Reunioes/ExibirConvites
+        public async Task<IActionResult> ExibirConvites(string id)
+        {
+            var chaves = id.Split("_");
+            var visitanteID = int.Parse(chaves[0]);
+            var reuniaoID = int.Parse(chaves[1]);
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var convite = await _context.Convites
+                .Include(c => c.Reunioes)
+                .Include(c => c.Visitantes)
+                .FirstOrDefaultAsync(m => m.ReuniaoID == reuniaoID && m.VisitanteID == visitanteID);
+
+            if (convite == null)
+            {
+                return NotFound();
+            }
+                       
+            return View(convite);
+        }
+
+
+        // POST: Reunioes/ConfirmarVisita
+        public async Task<IActionResult> ConfirmarVisita(string id)
+        {
+            var chaves = id.Split("_");
+            var visitanteID = int.Parse(chaves[0]);
+            var reuniaoID = int.Parse(chaves[1]);
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var convite = await _context.Convites
+                .Include(c => c.Reunioes)
+                .Include(c => c.Visitantes)
+                .FirstOrDefaultAsync(m => m.ReuniaoID == reuniaoID && m.VisitanteID == visitanteID);
+
+            if (convite == null)
+            {
+                return NotFound();
+            }
+
+            convite.Confirmado = true;
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("PainelPortaria");
+        }
+
+        /*
+        // GET: Reunioes/Criar
+        public IActionResult Criar()
+        {
+            ViewData["VisitadoID"] = new SelectList(_context.Visitados, "VisitadoID", "VisitadoNome");
+            return View(new Reuniao());
+        }
+
+        // POST: Reunioes/Criar
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Criar([Bind("ReuniaoID,VisitadoID,ReuniaoNome,ReuniaoData,ReuniaoHora,ReuniaoSala")] Reuniao reuniao)
+        {
+            _context.Add(reuniao);
+            int idReuniao = reuniao.ReuniaoID;
+
+            if (ModelState.IsValid)
+            {       
+                    await _context.SaveChangesAsync();
+                //return RedirectToAction("Convites", "Create");
+                // return RedirectToRoute(new { controller = "Convites", action = "Create", id = idReuniao });
+                return RedirectToAction("Convites", "Create");
+            }
+            //return View(reuniao);
+            return RedirectToRoute(new { controller = "Convites", action = "Create", id = idReuniao });
+        }
+        */
+
+
+        /*
+          // POST: Reunioes/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("ReuniaoID,VisitadoID,ReuniaoNome,ReuniaoData,ReuniaoHora,ReuniaoSala, Convites")] Reuniao reuniao)
+        {
+            if (ModelState.IsValid)
+            {
+                if (reuniao.Convites.Select(c=> c.VisitanteID).Distinct().Count() != reuniao.Convites.Count())
+                {
+                    ModelState.AddModelError("Convites[0].VisitanteID", "Já existe um convite para este visitante");
+                }
+                else 
+                {
+                    _context.Add(reuniao);
+                    int idReuniao = reuniao.ReuniaoID;
+                    await _context.SaveChangesAsync();
+                    // return RedirectToAction("Index");
+                    return RedirectToAction("CreateConvites");
+                }
+            }
+            ViewData["VisitanteID"] = new SelectList(_context.Visitantes.Select(x => new { 
+            x.VisitanteID, VisitanteNome = x.VisitanteNome + " - " +x.VisitanteEmail
+            }), "VisitanteID", "VisitanteNome");
+            ViewData["VisitadoID"] = new SelectList(_context.Visitados, "VisitadoID", "VisitadoNome");
+            return View(reuniao);
+        }
+         
+         
+         */
     }
 }

@@ -10,16 +10,16 @@
     <thead bgcolor="#F0F8FF">
         <tr>
             <th>
-                Assunto
+                @Html.DisplayNameFor(model => model.ReuniaoNome)
+             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReuniaoData)
             </th>
             <th>
-                Data
+                @Html.DisplayNameFor(model => model.ReuniaoData)
             </th>
             <th>
-                Hora
-            </th>
-            <th>
-                Organizador
+                @Html.DisplayNameFor(model => model.Visitados)
             </th>
         </tr>
     </thead>
@@ -66,5 +66,6 @@
 </table>
 
 <div>
+    <a asp-action="Edit" asp-route-id="@Model.ReuniaoID">Editar</a> |
     <a asp-action="Index">Voltar para Lista</a>
 </div>

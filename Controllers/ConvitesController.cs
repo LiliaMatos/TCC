@@ -20,9 +20,15 @@ namespace PortariaInteligente.Controllers
         }
 
         // GET: Convites
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(int ? ReuniaoID)
         {
             var applicationDbContext = _context.Convites.Include(c => c.Reunioes).Include(c => c.Visitantes);
+            if (ReuniaoID.HasValue)
+            {
+                ViewData["ReuniaoID"] = ReuniaoID;
+                return View(await applicationDbContext.Where(c => c.ReuniaoID ==  ReuniaoID).ToListAsync());
+            }
+            
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -75,10 +81,12 @@ namespace PortariaInteligente.Controllers
             {
                 _context.Add(convite);
                 await _context.SaveChangesAsync();
+                //Depois de salvar retorna para o Index de Convites
                 return RedirectToAction(nameof(Index));
             }
             ViewData["ReuniaoID"] = new SelectList(_context.Reunioes, "ReuniaoID", "ReuniaoNome", convite.ReuniaoID);
             ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "VisitanteNome", convite.VisitanteID);
+            //Faz o quê e quando?
             return View(convite);
         }
 

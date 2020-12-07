@@ -9,7 +9,7 @@ namespace PortariaInteligente.Models
         public int VisitadoID { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [Display(Name = "Nome")]
+        [Display(Name = "Organizador")]
         [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         [StringLength(150, MinimumLength = 5)]
         public string VisitadoNome { get; set; }

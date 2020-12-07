@@ -341,10 +341,8 @@ C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Papeis\Delete.cshtml.g.cs
 C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Papeis\Details.cshtml.g.cs
 C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Papeis\Edit.cshtml.g.cs
 C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Papeis\Index.cshtml.g.cs
-C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\Convites.cshtml.g.cs
 C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\Create.cshtml.g.cs
 C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\Delete.cshtml.g.cs
-C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\Details - Cópia.cshtml.g.cs
 C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\Details.cshtml.g.cs
 C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\Edit.cshtml.g.cs
 C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\Index.cshtml.g.cs
@@ -379,3 +377,5 @@ C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Convites\Details.cshtml.g.cs
 C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Convites\Edit.cshtml.g.cs
 C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Convites\Index.cshtml.g.cs
 C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\PainelPortaria.cshtml.g.cs
+C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\CreateConvites.cshtml.g.cs
+C:\IES301\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\ExibirConvites.cshtml.g.cs

@@ -1,0 +1,39 @@
+﻿@model PortariaInteligente.Models.Convite
+
+@{
+    ViewData["Title"] = "CreateConvites";
+}
+
+<h1>Adicionar Convite</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="CreateConvites">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ReuniaoID">
+            <div class="form-group">
+                <label asp-for="ReuniaoID" class="control-label"></label>
+                <select disabled asp-for="ReuniaoID" class="form-control" asp-items="ViewBag.ReuniaoID"></select>
+                <span asp-validation-for="ReuniaoID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="VisitanteID" class="control-label"></label>
+                <select asp-for="VisitanteID" class="form-control" asp-items="ViewBag.VisitanteID"></select>
+                <span asp-validation-for="VisitanteID" class="text-danger"></span>
+
+            </div>
+            <p class="text-success">@ViewBag.Mensagem</p>
+            <div class="form-group">
+                <input type="submit" value="Adicionar Convite" class="btn btn-primary" />
+                <input type="submit" value="Concluir" class="btn btn-primary" formaction="/Reunioes/Details/@Model.ReuniaoID" />
+            </div>
+        </form>
+      
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar para a Lista</a>
+</div>
+

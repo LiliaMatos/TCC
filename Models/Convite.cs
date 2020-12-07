@@ -16,5 +16,7 @@ namespace PortariaInteligente.Models
         public int ReuniaoID { get; set; }
         public virtual Reuniao Reunioes { get; set; }
 
+        public bool Confirmado { get; set; }
+
     }
 }

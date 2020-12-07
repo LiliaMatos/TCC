@@ -35,7 +35,7 @@ namespace PortariaInteligente.Models
         public DateTime ReuniaoHora { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [Display(Name = "Sala")]
+        [Display(Name = "Local")]
         public string ReuniaoSala { get; set; }
 
         public virtual IList<Convite> Convites { get; set; }

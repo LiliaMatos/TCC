@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h4>Painel Portaria</h4>
+<h3>Painel Portaria</h3>
 
 <hr />
 <div class="row">
@@ -75,7 +75,7 @@
                 @Html.DisplayFor(modelItem => item.Reunioes.ReuniaoNome)
             </td>
             <td>
-                <a asp-action="Confirmar" asp-route-id="@item.VisitanteID">Confirmar</a> |
+                <a asp-action="ExibirConvites" asp-route-id="@(item.VisitanteID + "_" + item.ReuniaoID)">ver</a>
             </td>
         </tr>
         }

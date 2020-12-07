@@ -4,11 +4,12 @@
     ViewData["Title"] = "Create";
 }
 
-<h4>Editar Reuniao</h4>
+<h3>Editar Reuniao</h3>
 <hr />
 <form asp-action="Edit">
     <div class="row">
         <div class="col-md-6">
+            <h4>Reunião</h4>
             <input type="hidden" asp-for="ReuniaoID">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -37,12 +38,13 @@
             </div>
 
             <div class="form-group">
-                <input type="submit" value="Editar" class="btn btn-primary" />
+                <input type="submit" value="Editar Reunião" class="btn btn-primary" />
+                <input type="submit" value="Editar Convites" class="btn btn-primary" formaction="/Convites/Index?ReuniaoID=@Model.ReuniaoID" />
             </div>
 
         </div>
         <div class=" col-md-6">
-            <input type="submit" value="Adicionar Convite" class="btn btn-primary" formaction="/Reunioes/AddConvite" />
+            <h4>Convites</h4>
             @for (int i = 0; i < Model.Convites.Count; i++)
             {
                 <div class="form-group">

@@ -4,38 +4,49 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Index</h1>
+<h1>Lista de Convites</h1>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
+
+
+@if (ViewBag.ReuniaoID != null)
+{
+    <a asp-controller="Reunioes" asp-action="CreateConvites" class="btn btn-primary" asp-route-ReuniaoID="@ViewBag.ReuniaoID">Adicionar Convites</a>
+
+}
+else
+{
+    <a asp-action="Create" class="btn btn-primary">Adicionar Convites</a>
+}
+
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Visitantes)
+                @Html.DisplayNameFor(model => model.Reunioes)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Reunioes)
+                @Html.DisplayNameFor(model => model.Visitantes)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Visitantes.VisitanteNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reunioes.ReuniaoNome)
-            </td>
-            <td>
-                @* @Html.ActionLink("Edit", "Edit", new { id= item.VisitanteID+"_"+item.ReuniaoID})*@
-                @Html.ActionLink("Details", "Details", new { id = item.VisitanteID + "_" + item.ReuniaoID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.VisitanteID + "_" + item.ReuniaoID })
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reunioes.ReuniaoNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Visitantes.VisitanteNome)
+                </td>
+
+                <td>
+                    @Html.ActionLink("Detalhes", "Details", new { id = item.VisitanteID + "_" + item.ReuniaoID }) |
+                    @Html.ActionLink("Excluir", "Delete", new { id = item.VisitanteID + "_" + item.ReuniaoID })
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

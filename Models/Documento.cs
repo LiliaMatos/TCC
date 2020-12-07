@@ -9,7 +9,7 @@ namespace PortariaInteligente.Models
         public int DocumentoID { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [Display(Name = "Tipo de Documento")]
+        [Display(Name = "Tipo do Documento")]
         public string DocumentoNome { get; set; }
         public virtual ICollection<Visitante> Visitantes { get; set; }
     }

@@ -4,13 +4,15 @@
     ViewData["Title"] = "Edit";
 }
 
-<h4>Editar Visitante</h4>
+<h3>Editar Visitante</h3>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
+<form asp-action="Edit">
+    <div class="row">
+        <div class="col-md-6">
+
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="VisitanteID" />
+            <h4>Dados Pessoais</h4>
             <div class="form-group">
                 <label asp-for="VisitanteNome" class="control-label"></label>
                 <input asp-for="VisitanteNome" class="form-control" />
@@ -42,6 +44,12 @@
                 <span asp-validation-for="DocumentoNumero" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </div>
+        <div class="col-md-6">
+            <h4>Dados do Veículo</h4>
+            <div class="form-group">
                 <label asp-for="CarroMarca" class="control-label"></label>
                 <input asp-for="CarroMarca" class="form-control" />
                 <span asp-validation-for="CarroMarca" class="text-danger"></span>
@@ -61,13 +69,11 @@
                 <input asp-for="CarroPlaca" class="form-control" />
                 <span asp-validation-for="CarroPlaca" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Salvar" class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-</div>
 
+        </div>
+
+    </div>
+</form>
 <div>
     <a asp-action="Index">Voltar para a Lista</a>
 </div>
