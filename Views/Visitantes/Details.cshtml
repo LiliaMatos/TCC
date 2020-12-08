@@ -5,73 +5,73 @@
 }
 
 
-    <h4>Detalhes Visitante</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-6">
-            <dl class="row">
-                <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.VisitanteNome)
-                </dt>
-                <dd class="col-sm-6">
-                    @Html.DisplayFor(model => model.VisitanteNome)
-                </dd>
-                <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.VisitanteEmail)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.VisitanteEmail)
-                </dd>
-                <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.VisitanteCel)
-                </dt>
-                <dd class="col-sm-6">
-                    @Html.DisplayFor(model => model.VisitanteCel)
-                </dd>
-                <dt class="col-sm-6">
-                    @Html.DisplayNameFor(model => model.Empresa)
-                </dt>
-                <dd class="col-sm-6">
-                    @Html.DisplayFor(model => model.Empresa)
-                </dd>
+<h3>Detalhes do Visitante</h3>
+<hr />
+<div>
+    <h4>Dados Pessoais</h4>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.VisitanteNome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.VisitanteNome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.VisitanteEmail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.VisitanteEmail)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.VisitanteCel)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.VisitanteCel)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Empresa)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Empresa)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Documentos.DocumentoNome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Documentos.DocumentoNome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DocumentoNumero)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DocumentoNumero)
+        </dd>
+    </dl>
 
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.Documentos.DocumentoNome)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.Documentos.DocumentoNome)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.DocumentoNumero)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.DocumentoNumero)
-                </dd>
-                <>
-                </div>
-                <dt class="col-sm-2">Carro</dt>
-                <dd class="col-sm-10"></dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.CarroMarca)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.CarroMarca)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.CarroModelo)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.CarroModelo)
-                </dd>
-                <dt class="col-sm-2">
-                    @Html.DisplayNameFor(model => model.CarroPlaca)
-                </dt>
-                <dd class="col-sm-10">
-                    @Html.DisplayFor(model => model.CarroPlaca)
-                </dd>
-            </dl>
-        </div>
-        <div>
-            <a asp-action="Edit" asp-route-id="@Model.VisitanteID">Editar</a> |
-            <a asp-action="Index">Voltar para a Lista</a>
-        </div>
+    <h4>Dados do Veículo</h4>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CarroMarca)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CarroMarca)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CarroModelo)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CarroModelo)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CarroPlaca)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CarroPlaca)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.VisitanteID">Editar</a> |
+    <a asp-action="Index">Voltar para a Lista</a>
+</div>

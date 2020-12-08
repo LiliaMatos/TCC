@@ -6,36 +6,39 @@
 
 <div class="row">
     <div class="col-md-6">
-        <h3>Filtros</h3>
+        <h4>Filtros</h4>
+        <hr />
         <form asp-controller="Reunioes" asp-action="Index">
             <div class="form-group">
-                <label class="col-form-label">Data:</label>
+                <label class="col-form-label"><strong>Data:</strong></label>
                 <input type="date" name="data">
-                <input type="submit" value="Filtrar" />
+                <input type="submit" value="Filtrar" class="btn btn-primary btn-sm" />
             </div>
             <div class="form-group">
-                <label class="col-form-label">Assunto:</label>
+                <label class="col-form-label"><strong>Assunto:</strong></label>
                 <input type="text" name="assunto">
-                <input type="submit" value="Filtrar" />
+                <input type="submit" value="Filtrar" class="btn btn-primary btn-sm"  />
             </div>
             <div class="form-group">
-                <label class="col-form-label">Organizador:</label>
+                <label class="col-form-label"><strong>Visitado:</strong></label>
                 <input type="text" name="visitado">
-                <input type="submit" value="Filtrar" />
+                <input type="submit" value="Filtrar" class="btn btn-primary btn-sm"  />
             </div>
         </form>
     </div>
 
     <div class="col-md-6">
-         <form asp-controller="Reunioes" asp-action="Index">
-            <h3>
+        <form asp-controller="Reunioes" asp-action="Index">
+            <h4>
                 <a asp-action="Create">Cadastrar Reunião</a>
-            </h3>
+            </h4>
+            <hr />
         </form>
+        <br/>
     </div>
 </div>
-<hr />
-<h3>Reuniões Cadastradas</h3>
+
+<h4>Reuniões Cadastradas</h4>
 <table class="table">
     <thead>
         <tr>

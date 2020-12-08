@@ -20,9 +20,19 @@ namespace PortariaInteligente.Controllers
         }
 
         // GET: Visitados
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string nome, string email)
         {
-            return View(await _context.Visitados.ToListAsync());
+            var visitados = from m in _context.Visitados select m;
+
+            if (!String.IsNullOrEmpty(nome))
+            {
+                visitados = visitados.Where(s => s.VisitadoNome.Contains(nome));
+            }
+             if (!String.IsNullOrEmpty(email))
+            {
+                visitados = visitados.Where(s => s.VisitadoEmail.Contains(email));
+            }
+            return View(await visitados.ToListAsync());
         }
 
         // GET: Visitados/Details/5
