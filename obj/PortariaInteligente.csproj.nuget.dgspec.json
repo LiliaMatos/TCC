@@ -72,6 +72,14 @@
             "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
               "target": "Package",
               "version": "[3.0.0, )"
+            },
+            "PrettyPrintNet": {
+              "target": "Package",
+              "version": "[1.6.1, )"
+            },
+            "VScodePrint2015": {
+              "target": "Package",
+              "version": "[14.0.8, )"
             }
           },
           "imports": [

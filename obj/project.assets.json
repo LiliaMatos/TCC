@@ -996,6 +996,15 @@
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
         }
       },
+      "PrettyPrintNet/1.6.1": {
+        "type": "package",
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81+monotouch+monoandroid/PrettyPrintNet.dll": {}
+        },
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81+monotouch+monoandroid/PrettyPrintNet.dll": {}
+        }
+      },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
         "type": "package",
         "runtimeTargets": {
@@ -2800,6 +2809,9 @@
         "runtime": {
           "lib/netstandard1.3/System.Xml.XmlSerializer.dll": {}
         }
+      },
+      "VScodePrint2015/14.0.8": {
+        "type": "package"
       }
     }
   },
@@ -4308,6 +4320,19 @@
         "lib/netstandard1.6/NuGet.Frameworks.xml",
         "nuget.frameworks.4.7.0.nupkg.sha512",
         "nuget.frameworks.nuspec"
+      ]
+    },
+    "PrettyPrintNet/1.6.1": {
+      "sha512": "/mKQFojZHU746zGGgY21bHmrGMNfpbURc4WbHID+jfftuL9//MLU3f0s+gPaknjgyXvpU/rgU2oI3tAZIjyFCw==",
+      "type": "package",
+      "path": "prettyprintnet/1.6.1",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/portable-net40+sl5+wp80+win8+wpa81+monotouch+monoandroid/PrettyPrintNet.dll",
+        "lib/portable-net45+wp80+win8+wpa81+monotouch+monoandroid/PrettyPrintNet.dll",
+        "prettyprintnet.1.6.1.nupkg.sha512",
+        "prettyprintnet.nuspec"
       ]
     },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
@@ -8761,6 +8786,20 @@
         "system.xml.xmlserializer.4.3.0.nupkg.sha512",
         "system.xml.xmlserializer.nuspec"
       ]
+    },
+    "VScodePrint2015/14.0.8": {
+      "sha512": "/hTUZkVRqmkLpwGUISXJksvNQgV18Y8uzZzhm/kd59BxkEzpHzsF7JHYq7Q7qN03MR9OYH1n+yZNNFDj2HK6PQ==",
+      "type": "package",
+      "path": "vscodeprint2015/14.0.8",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "tools/VScodePrint2015.vsix",
+        "tools/install.ps1",
+        "vscodeprint2015.14.0.8.nupkg.sha512",
+        "vscodeprint2015.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
@@ -8772,7 +8811,9 @@
       "Microsoft.EntityFrameworkCore.Sqlite >= 3.0.0",
       "Microsoft.EntityFrameworkCore.Tools >= 3.0.0",
       "Microsoft.Extensions.Logging.Debug >= 3.0.0",
-      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.0.0"
+      "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.0.0",
+      "PrettyPrintNet >= 1.6.1",
+      "VScodePrint2015 >= 14.0.8"
     ]
   },
   "packageFolders": {
@@ -8847,6 +8888,14 @@
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
             "target": "Package",
             "version": "[3.0.0, )"
+          },
+          "PrettyPrintNet": {
+            "target": "Package",
+            "version": "[1.6.1, )"
+          },
+          "VScodePrint2015": {
+            "target": "Package",
+            "version": "[14.0.8, )"
           }
         },
         "imports": [
@@ -8880,5 +8929,17 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.403\\RuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'PrettyPrintNet 1.6.1' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "PrettyPrintNet",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.0"
+      ]
+    }
+  ]
 }

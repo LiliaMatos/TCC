@@ -32,6 +32,8 @@
           "Microsoft.EntityFrameworkCore.Tools": "3.0.0",
           "Microsoft.Extensions.Logging.Debug": "3.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "3.0.0",
+          "PrettyPrintNet": "1.6.1",
+          "VScodePrint2015": "14.0.8",
           "Microsoft.AspNetCore.Antiforgery": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "3.0.0.0",
           "Microsoft.AspNetCore.Authentication.Cookies": "3.0.0.0",
@@ -1140,6 +1142,17 @@
         },
         "compile": {
           "lib/netstandard1.6/NuGet.Frameworks.dll": {}
+        }
+      },
+      "PrettyPrintNet/1.6.1": {
+        "runtime": {
+          "lib/portable-net45+wp80+win8+wpa81+monotouch+monoandroid/PrettyPrintNet.dll": {
+            "assemblyVersion": "1.6.1.0",
+            "fileVersion": "1.6.1.0"
+          }
+        },
+        "compile": {
+          "lib/portable-net45+wp80+win8+wpa81+monotouch+monoandroid/PrettyPrintNet.dll": {}
         }
       },
       "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {},
@@ -2274,6 +2287,7 @@
           "System.Xml.XmlDocument": "4.3.0"
         }
       },
+      "VScodePrint2015/14.0.8": {},
       "Microsoft.AspNetCore.Antiforgery/3.0.0.0": {
         "compile": {
           "Microsoft.AspNetCore.Antiforgery.dll": {}
@@ -4401,6 +4415,13 @@
       "path": "nuget.frameworks/4.7.0",
       "hashPath": "nuget.frameworks.4.7.0.nupkg.sha512"
     },
+    "PrettyPrintNet/1.6.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/mKQFojZHU746zGGgY21bHmrGMNfpbURc4WbHID+jfftuL9//MLU3f0s+gPaknjgyXvpU/rgU2oI3tAZIjyFCw==",
+      "path": "prettyprintnet/1.6.1",
+      "hashPath": "prettyprintnet.1.6.1.nupkg.sha512"
+    },
     "runtime.debian.8-x64.runtime.native.System.Security.Cryptography.OpenSsl/4.3.0": {
       "type": "package",
       "serviceable": true,
@@ -5170,6 +5191,13 @@
       "sha512": "sha512-kwo6Kf+0jjEcmB+S2BI5SL0xHHRIBd0Cjf11BGliuZ3Va9V1hDbKZmq0mb7HO8QPlYYrq8eNToOzipfw6ARKEw==",
       "path": "system.xml.xmlserializer/4.3.0",
       "hashPath": "system.xml.xmlserializer.4.3.0.nupkg.sha512"
+    },
+    "VScodePrint2015/14.0.8": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-/hTUZkVRqmkLpwGUISXJksvNQgV18Y8uzZzhm/kd59BxkEzpHzsF7JHYq7Q7qN03MR9OYH1n+yZNNFDj2HK6PQ==",
+      "path": "vscodeprint2015/14.0.8",
+      "hashPath": "vscodeprint2015.14.0.8.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Antiforgery/3.0.0.0": {
       "type": "referenceassembly",
