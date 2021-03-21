@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rwDWqbyeSYwiFhI2rY655fuQSqTbRWRvdKubJAO1Cg2mIlvX4wfD9uFMbd/CuJCxWyDtswk7qbYdfNs4nrRfPw==",
+  "dgSpecHash": "4CQU7CJGoerx5STwS61m2g7K1yM7f3X7uPUDbd0ekaX7fr+RgrjV09T/FwC3CK7DWn8agvtpMtT1q8RNpNnH7g==",
   "success": true,
-  "projectFilePath": "C:\\IES301\\PortariaInteligente.csproj",
+  "projectFilePath": "C:\\TCC\\PortariaInteligente.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Lília Matos\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\3.0.0\\microsoft.aspnetcore.cryptography.internal.3.0.0.nupkg.sha512",
     "C:\\Users\\Lília Matos\\.nuget\\packages\\microsoft.aspnetcore.cryptography.keyderivation\\3.0.0\\microsoft.aspnetcore.cryptography.keyderivation.3.0.0.nupkg.sha512",

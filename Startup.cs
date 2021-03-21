@@ -26,9 +26,6 @@ namespace PortariaInteligente
                     Configuration.GetConnectionString("DefaultConnection")));
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
-            //https://www.youtube.com/watch?v=egITMrwMOPU
-            /* services.AddtIdentity<IdentityUser, IdentityRole>
-                 .AddEntityFrameworkStores<ApplicationDbContext>();*/
             services.AddControllersWithViews();
             services.AddRazorPages();
         }

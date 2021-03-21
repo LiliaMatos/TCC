@@ -10,6 +10,7 @@ using PortariaInteligente.Data;
 using PortariaInteligente.Models;
 using System.Globalization;
 using System.Threading;
+using PortariaInteligente.ViewModels;
 
 namespace PortariaInteligente.Controllers
 {
@@ -43,12 +44,38 @@ namespace PortariaInteligente.Controllers
             return View(await reunioes.ToListAsync());
         }
 
+        // GET: Reunioes/ExibirReubiaoViewModel
+        public IActionResult ExibirReubiaoViewModel()
+        {
+            //Exercício com ViewModel
+            /*Fazer uma caixa de seleção com a relação das reuniões existentes e apartir de ID daquela selecionada relacionar os convidados.
+             Por hora mostra uma reunião com ID em hardcoding e todos os visitantes cadastrados
+             */
+
+            var reunioes = from m in _context.Reunioes.Include("Visitados").Include("Convites").Include("Visitantes") select m;
+
+            //Selecionar uma reunião
+            Reuniao reuniao = _context.Reunioes.FirstOrDefault(x => x.ReuniaoID == 68);
+
+            //Criar uma lista para os convidados daquela reunião
+            var visitantes = new List<Visitante>(from m in _context.Visitantes select m);
+
+
+            var ViewModel = new ReuniaoViewModel
+            {
+                Reuniao = (Reuniao)reuniao,
+                qtdVisitantes = 3,
+                listaVisitantes = visitantes
+            };
+            return View(ViewModel);
+        }
+
         // GET: Reunioes/Details/5
         public IActionResult Details(int id)
         {
 
             var Reuniao = GetReuniao(id);
-         
+
             return View(Reuniao);
         }
 
@@ -58,7 +85,7 @@ namespace PortariaInteligente.Controllers
             ViewData["VisitadoID"] = new SelectList(_context.Visitados, "VisitadoID", "VisitadoNome");
             return View(new Reuniao());
         }
-        
+
         // POST: Reunioes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -71,12 +98,12 @@ namespace PortariaInteligente.Controllers
 
             if (ModelState.IsValid)
             {
-                    _context.Add(reuniao);
-                    int idReuniao = reuniao.ReuniaoID;
-                    await _context.SaveChangesAsync();
-                    // return RedirectToAction("Index");
-                    return RedirectToAction("CreateConvites", new { ReuniaoID = reuniao.ReuniaoID});
-   
+                _context.Add(reuniao);
+                int idReuniao = reuniao.ReuniaoID;
+                await _context.SaveChangesAsync();
+                // return RedirectToAction("Index");
+                return RedirectToAction("CreateConvites", new { ReuniaoID = reuniao.ReuniaoID });
+
             }
             ViewData["VisitadoID"] = new SelectList(_context.Visitados, "VisitadoID", "VisitadoNome");
             return View(reuniao);
@@ -85,10 +112,10 @@ namespace PortariaInteligente.Controllers
         // GET:  Reunioes/CreateConvites
         public IActionResult CreateConvites(int ReuniaoID)
         {
-           ViewData["ReuniaoID"] = new SelectList(_context.Reunioes, "ReuniaoID", "ReuniaoNome");
-           ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "VisitanteNome");
-           ViewData["Mensagem"] = TempData["Mensagem"];
-           return View(new Convite { ReuniaoID =  ReuniaoID});
+            ViewData["ReuniaoID"] = new SelectList(_context.Reunioes, "ReuniaoID", "ReuniaoNome");
+            ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "VisitanteNome");
+            ViewData["Mensagem"] = TempData["Mensagem"];
+            return View(new Convite { ReuniaoID = ReuniaoID });
         }
 
         // POST: Reunioes/CreateConvites
@@ -107,7 +134,7 @@ namespace PortariaInteligente.Controllers
                 await _context.SaveChangesAsync();
                 //Depois de salvar retorna para o Index de Convites
                 TempData["Mensagem"] = "Convite adicionado.";
-                return RedirectToAction(nameof(CreateConvites), new {ReuniaoID = convite.ReuniaoID });
+                return RedirectToAction(nameof(CreateConvites), new { ReuniaoID = convite.ReuniaoID });
             }
             ViewData["ReuniaoID"] = new SelectList(_context.Reunioes, "ReuniaoID", "ReuniaoNome", convite.ReuniaoID);
             ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "VisitanteNome", convite.VisitanteID);
@@ -130,7 +157,8 @@ namespace PortariaInteligente.Controllers
                 return NotFound();
             }
 
-            ViewData["VisitanteID"] = new SelectList(_context.Visitantes.Select(x => new {
+            ViewData["VisitanteID"] = new SelectList(_context.Visitantes.Select(x => new
+            {
                 x.VisitanteID,
                 VisitanteNome = x.VisitanteNome + " - " + x.VisitanteEmail
             }), "VisitanteID", "VisitanteNome");
@@ -171,7 +199,8 @@ namespace PortariaInteligente.Controllers
                 return RedirectToAction(nameof(Index));
             }
 
-            ViewData["VisitanteID"] = new SelectList(_context.Visitantes.Select(x => new {
+            ViewData["VisitanteID"] = new SelectList(_context.Visitantes.Select(x => new
+            {
                 x.VisitanteID,
                 VisitanteNome = x.VisitanteNome + " - " + x.VisitanteEmail
             }), "VisitanteID", "VisitanteNome");
@@ -215,8 +244,8 @@ namespace PortariaInteligente.Controllers
         public async Task<IActionResult> PainelPortaria(DateTime data, string visitante, string visitado)
         {
 
-            var convites = from m in _context.Convites.Include("Visitantes").Include("Reunioes").Include("Reunioes.Visitados") where  m.Reunioes.ReuniaoData == DateTime.Today && m.Confirmado == false select m ;
-                    
+            var convites = from m in _context.Convites.Include("Visitantes").Include("Reunioes").Include("Reunioes.Visitados") where m.Reunioes.ReuniaoData == DateTime.Today && m.Confirmado == false select m;
+
 
             if (data.Year != 0001)
             {
@@ -230,7 +259,7 @@ namespace PortariaInteligente.Controllers
             {
                 convites = convites.Where(s => s.Reunioes.Visitados.VisitadoNome.Contains(visitado));
             }
-  
+
             return View(await convites.ToListAsync());
         }
 
@@ -243,7 +272,7 @@ namespace PortariaInteligente.Controllers
             Reuniao listaTodasReunioes = _context.Reunioes.
                 Include("Visitados").
                 Include("Convites").
-                Include("Convites.Visitantes").                
+                Include("Convites.Visitantes").
                 FirstOrDefault(x => x.ReuniaoID == id);
             return (listaTodasReunioes);
         }
@@ -265,7 +294,8 @@ namespace PortariaInteligente.Controllers
         {
             reuniao.Convites.Add(new Convite());
 
-            ViewData["VisitanteID"] = new SelectList(_context.Visitantes.Select(x => new {
+            ViewData["VisitanteID"] = new SelectList(_context.Visitantes.Select(x => new
+            {
                 x.VisitanteID,
                 VisitanteNome = x.VisitanteNome + " - " + x.VisitanteEmail
             }), "VisitanteID", "VisitanteNome");
@@ -279,10 +309,10 @@ namespace PortariaInteligente.Controllers
             else
             {
                 TempData["Model"] = reuniao;
-                return RedirectToAction(nameof(CreateConvites), new { id = reuniao.ReuniaoID }) ;
-       
+                return RedirectToAction(nameof(CreateConvites), new { id = reuniao.ReuniaoID });
+
             }
-            
+
         }
 
 
@@ -307,7 +337,7 @@ namespace PortariaInteligente.Controllers
             {
                 return NotFound();
             }
-                       
+
             return View(convite);
         }
 

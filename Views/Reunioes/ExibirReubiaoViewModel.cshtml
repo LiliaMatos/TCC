@@ -1,0 +1,13 @@
+﻿@model PortariaInteligente.ViewModels.ReuniaoViewModel
+@{
+    ViewData["Title"] = "Exibir";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>@Model.Reuniao.ReuniaoNome</h1>
+<ul>
+    @foreach (var Visitante in Model.listaVisitantes)
+    {
+        <li>@Visitante.VisitanteNome  - @Visitante.VisitanteEmail </li>
+    }
+</ul>

@@ -1,14 +1,15 @@
 ﻿@model PortariaInteligente.Models.Reuniao
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Create";
 }
 
-<h3>Editar Reunião</h3>
+<h3>Editar Reuniao</h3>
 <hr />
 <form asp-action="Edit">
     <div class="row">
         <div class="col-md-6">
+            <h4>Reunião</h4>
             <input type="hidden" asp-for="ReuniaoID">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
@@ -25,10 +26,6 @@
                 <input asp-for="ReuniaoData" class="form-control" />
                 <span asp-validation-for="ReuniaoData" class="text-danger"></span>
             </div>
-        </div>
-        <div class="col-md-6">
-            <input type="hidden" asp-for="ReuniaoID">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="ReuniaoHora" class="control-label"></label>
                 <input asp-for="ReuniaoHora" class="form-control" />
@@ -40,36 +37,54 @@
                 <span asp-validation-for="ReuniaoSala" class="text-danger"></span>
             </div>
 
+            <div class="form-group">
+                <input type="submit" value="Editar Reunião" class="btn btn-primary" />
+                <input type="submit" value="Editar Convites" class="btn btn-primary" formaction="/Convites/Index?ReuniaoID=@Model.ReuniaoID" />
+            </div>
+
         </div>
-    </div>
-    <div class=" col-md-12">
-        <h4>Convites</h4>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-5">
-                <strong>Nome</strong>
-            </dt>
-            <dd class="col-sm-7">
-                <strong>Email</strong>
-            </dd>
-        </dl>
-        @foreach (Convite p in Model.Convites)
-        {
+        <div class=" col-md-6">
+            <h4>Convidados</h4>
+            @*
+
+                            @foreach (Convite p in Model.Convites)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.Visitantes.VisitanteNome)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => p.Visitantes.VisitanteEmail)
+                        </td>
+                    </tr>
+                }
+            *@
+
+
             <dl class="row">
                 <dt class="col-sm-5">
-                    @Html.DisplayFor(modelItem => p.Visitantes.VisitanteNome)
+                    <strong>Nome</strong>
                 </dt>
                 <dd class="col-sm-7">
-                    @Html.DisplayFor(modelItem => p.Visitantes.VisitanteEmail)
+                    <strong>Email</strong>
                 </dd>
             </dl>
-        }
+            @foreach (Convite p in Model.Convites)
+            {
+                <dl class="row">
+                    <dt class="col-sm-5">
+                        @Html.DisplayFor(modelItem => p.Visitantes.VisitanteNome)
+                    </dt>
+                    <dd class="col-sm-7">
+                        @Html.DisplayFor(modelItem => p.Visitantes.VisitanteEmail)
+                    </dd>
+                </dl>
+            }
 
+        </div>
     </div>
 </form>
-
-<div class="form-group">
-    <input type="submit" value="Editar Reunião" class="btn btn-primary" />
-    <input type="submit" value="Editar Convites" class="btn btn-primary" formaction="/Convites/Index?ReuniaoID=@Model.ReuniaoID" />
+<div>
     <a asp-action="Index">Voltar para a Lista</a>
 </div>
+
