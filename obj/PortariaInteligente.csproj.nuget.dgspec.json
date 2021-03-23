@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\TCC\\PortariaInteligente.csproj": {}
+    "D:\\TCC\\PortariaInteligente.csproj": {}
   },
   "projects": {
-    "C:\\TCC\\PortariaInteligente.csproj": {
+    "D:\\TCC\\PortariaInteligente.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\TCC\\PortariaInteligente.csproj",
+        "projectUniqueName": "D:\\TCC\\PortariaInteligente.csproj",
         "projectName": "PortariaInteligente",
-        "projectPath": "C:\\TCC\\PortariaInteligente.csproj",
-        "packagesPath": "C:\\Users\\Lília Matos\\.nuget\\packages\\",
-        "outputPath": "C:\\TCC\\obj\\",
+        "projectPath": "D:\\TCC\\PortariaInteligente.csproj",
+        "packagesPath": "C:\\Users\\raymu\\.nuget\\packages\\",
+        "outputPath": "D:\\TCC\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Lília Matos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\raymu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -102,6 +103,14 @@
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
               "version": "[3.0.3, 3.0.3]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
             }
           ],
           "frameworkReferences": {
@@ -112,7 +121,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
         }
       }
     }

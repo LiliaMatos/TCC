@@ -22,51 +22,51 @@
             </div>
             <div class="form-group">
                 <label asp-for="VisitanteCel" class="control-label"></label>
-                <input asp-for="VisitanteCel" class="form-control" />
+                <input asp-for="VisitanteCel" class="form-control cel-sp-mask" placeholder= "Ex.: (00) 00000-0000"> <!--class="form-control" />-->
                 <span asp-validation-for="VisitanteCel" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Empresa" class="control-label"></label>
-                <input asp-for="Empresa" class="form-control" />
-                <span asp-validation-for="Empresa" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DocumentoID" class="control-label">Tipo do Documento </label>
-                <select asp-for="DocumentoID" class="form-control" asp-items="ViewBag.DocumentoID"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="DocumentoNumero" class="control-label"></label>
-                <input asp-for="DocumentoNumero" class="form-control" />
-                <span asp-validation-for="DocumentoNumero" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CarroMarca" class="control-label"></label>
-                <input asp-for="CarroMarca" class="form-control" />
-                <span asp-validation-for="CarroMarca" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CarroCor" class="control-label"></label>
-                <input asp-for="CarroCor" class="form-control" />
-                <span asp-validation-for="CarroCor" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CarroModelo" class="control-label"></label>
-                <input asp-for="CarroModelo" class="form-control" />
-                <span asp-validation-for="CarroModelo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CarroPlaca" class="control-label"></label>
-                <input asp-for="CarroPlaca" class="form-control" />
-                <span asp-validation-for="CarroPlaca" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Criar" class="btn btn-primary" />
-            </div>
-        </form>
+                <div class="form-group">
+                    <label asp-for="Empresa" class="control-label"></label>
+                    <input asp-for="Empresa" class="form-control" />
+                    <span asp-validation-for="Empresa" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DocumentoID" class="control-label">Tipo do Documento </label>
+                    <select asp-for="DocumentoID" class="form-control" asp-items="ViewBag.DocumentoID"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="DocumentoNumero" class="control-label"></label>
+                    <input asp-for="DocumentoNumero" class="form-control" />
+                    <span asp-validation-for="DocumentoNumero" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CarroMarca" class="control-label"></label>
+                    <input asp-for="CarroMarca" class="form-control" />
+                    <span asp-validation-for="CarroMarca" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CarroCor" class="control-label"></label>
+                    <input asp-for="CarroCor" class="form-control" />
+                    <span asp-validation-for="CarroCor" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CarroModelo" class="control-label"></label>
+                    <input asp-for="CarroModelo" class="form-control" />
+                    <span asp-validation-for="CarroModelo" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CarroPlaca" class="control-label"></label>
+                    <input asp-for="CarroPlaca" class="form-control" />
+                    <span asp-validation-for="CarroPlaca" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Criar" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Voltar para a Lista</a>
-</div>
+    <div>
+        <a asp-action="Index">Voltar para a Lista</a>
+    </div>
 
