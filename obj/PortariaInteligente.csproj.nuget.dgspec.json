@@ -1,23 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\TCC\\PortariaInteligente.csproj": {}
+    "C:\\Users\\WINDOWS\\Desktop\\ADS\\TCC\\TCC\\PortariaInteligente.csproj": {}
   },
   "projects": {
-    "C:\\TCC\\PortariaInteligente.csproj": {
+    "C:\\Users\\WINDOWS\\Desktop\\ADS\\TCC\\TCC\\PortariaInteligente.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\TCC\\PortariaInteligente.csproj",
+        "projectUniqueName": "C:\\Users\\WINDOWS\\Desktop\\ADS\\TCC\\TCC\\PortariaInteligente.csproj",
         "projectName": "PortariaInteligente",
-        "projectPath": "C:\\TCC\\PortariaInteligente.csproj",
-        "packagesPath": "C:\\Users\\Lília Matos\\.nuget\\packages\\",
-        "outputPath": "C:\\TCC\\obj\\",
+        "projectPath": "C:\\Users\\WINDOWS\\Desktop\\ADS\\TCC\\TCC\\PortariaInteligente.csproj",
+        "packagesPath": "C:\\Users\\WINDOWS\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\WINDOWS\\Desktop\\ADS\\TCC\\TCC\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\Lília Matos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\WINDOWS\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -75,6 +72,10 @@
               "target": "Package",
               "version": "[3.0.0, )"
             },
+            "NuGet.Core": {
+              "target": "Package",
+              "version": "[2.14.0, )"
+            },
             "PrettyPrintNet": {
               "target": "Package",
               "version": "[1.6.1, )"
@@ -102,6 +103,14 @@
             {
               "name": "Microsoft.NETCore.App.Host.win-x64",
               "version": "[3.0.3, 3.0.3]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
+            },
+            {
+              "name": "Microsoft.WindowsDesktop.App.Ref",
+              "version": "[3.0.0, 3.0.0]"
             }
           ],
           "frameworkReferences": {
@@ -112,7 +121,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

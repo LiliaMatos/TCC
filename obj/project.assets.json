@@ -892,6 +892,15 @@
           "lib/netstandard2.0/Microsoft.VisualStudio.Web.CodeGenerators.Mvc.dll": {}
         }
       },
+      "Microsoft.Web.Xdt/2.1.0": {
+        "type": "package",
+        "compile": {
+          "lib/net40/Microsoft.Web.XmlTransform.dll": {}
+        },
+        "runtime": {
+          "lib/net40/Microsoft.Web.XmlTransform.dll": {}
+        }
+      },
       "Microsoft.Win32.Primitives/4.3.0": {
         "type": "package",
         "dependencies": {
@@ -982,6 +991,18 @@
         },
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {}
+        }
+      },
+      "NuGet.Core/2.14.0": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.Web.Xdt": "2.1.0"
+        },
+        "compile": {
+          "lib/net40-Client/NuGet.Core.dll": {}
+        },
+        "runtime": {
+          "lib/net40-Client/NuGet.Core.dll": {}
         }
       },
       "NuGet.Frameworks/4.7.0": {
@@ -2858,7 +2879,7 @@
       ]
     },
     "Microsoft.AspNetCore.Html.Abstractions/2.2.0": {
-      "sha512": "Z08ZN/kjJ15AQyNY349dpTPJdpdVJ/RYLLJjY9sf6VoHBf3vRBSCBx6orXMspMeRJrhHultPTP0IKVK2g4KZxg==",
+      "sha512": "Y4rs5aMEXY8G7wJo5S3EEt6ltqyOTr/qOeZzfn+hw/fuQj5GppGckMY5psGLETo1U9hcT5MmAhaT5xtusM1b5g==",
       "type": "package",
       "path": "microsoft.aspnetcore.html.abstractions/2.2.0",
       "files": [
@@ -2975,7 +2996,7 @@
       ]
     },
     "Microsoft.AspNetCore.Razor/2.2.0": {
-      "sha512": "aM2aGQQh/kVOdgThej+4+ypFU8jSp2Dq/wZg9+e6/7RVAwlk8lQp8n2iYV9ltsSycE/4EU+LIMHegzaGBLOmsA==",
+      "sha512": "V54PIyDCFl8COnTp9gezNHpUNHk7F9UnerGeZy3UfbnwYvfzbo+ipqQmSgeoESH8e0JvKhRTyQyZquW2EPtCmg==",
       "type": "package",
       "path": "microsoft.aspnetcore.razor/2.2.0",
       "files": [
@@ -3001,7 +3022,7 @@
       ]
     },
     "Microsoft.AspNetCore.Razor.Runtime/2.2.0": {
-      "sha512": "UMBfVgxYVH0/OYNleZGCEsLHK8X5j80dU5hqYYBoTm2TfUoBkXDecuODtDAf5x0KfKZLKHnDT4+5lcIKKthQog==",
+      "sha512": "7YqK+H61lN6yj9RiQUko7oaOhKtRR9Q/kBcoWNRemhJdTIWOh1OmdvJKzZrMWOlff3BAjejkPQm+0V0qXk+B1w==",
       "type": "package",
       "path": "microsoft.aspnetcore.razor.runtime/2.2.0",
       "files": [
@@ -4184,6 +4205,18 @@
         "microsoft.visualstudio.web.codegenerators.mvc.nuspec"
       ]
     },
+    "Microsoft.Web.Xdt/2.1.0": {
+      "sha512": "/ieJ02r4MEJM21Eyl+c5kwoJWPhy+qEEcN68JaqDoamabgxJI1jGi/kNLuKvHUCl6tU7E0rMvaR6FmEnDWtS4A==",
+      "type": "package",
+      "path": "microsoft.web.xdt/2.1.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40/Microsoft.Web.XmlTransform.dll",
+        "microsoft.web.xdt.2.1.0.nupkg.sha512",
+        "microsoft.web.xdt.nuspec"
+      ]
+    },
     "Microsoft.Win32.Primitives/4.3.0": {
       "sha512": "9ZQKCWxH7Ijp9BfahvL2Zyf1cJIk8XYLF6Yjzr2yi0b2cOut/HQ31qf1ThHAgCc3WiZMdnWcfJCgN82/0UunxA==",
       "type": "package",
@@ -4223,7 +4256,7 @@
       ]
     },
     "Microsoft.Win32.Registry/4.5.0": {
-      "sha512": "vduxuHEqRgRrTE8wYG8Wxj/+6wwzddOmZzjKZx6rFMc/91aUBxI5etAFYxesoNaIja5NpgSTcnk6cN8BeYXf9A==",
+      "sha512": "+FWlwd//+Tt56316p00hVePBCouXyEzT86Jb3+AuRotTND0IYn0OO3obs1gnQEs/txEnt+rF2JBGLItTG+Be6A==",
       "type": "package",
       "path": "microsoft.win32.registry/4.5.0",
       "files": [
@@ -4303,6 +4336,18 @@
         "lib/portable-net45+win8+wp8+wpa81/Newtonsoft.Json.xml",
         "newtonsoft.json.12.0.2.nupkg.sha512",
         "newtonsoft.json.nuspec"
+      ]
+    },
+    "NuGet.Core/2.14.0": {
+      "sha512": "UDXFLVRDepqVqyYxQuxujfaAc7XePdw+Lsey+q36iqTm0nuSU1n9laIGqjokvBl0unifYtjSai7fqBQKKd9BUg==",
+      "type": "package",
+      "path": "nuget.core/2.14.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "lib/net40-Client/NuGet.Core.dll",
+        "nuget.core.2.14.0.nupkg.sha512",
+        "nuget.core.nuspec"
       ]
     },
     "NuGet.Frameworks/4.7.0": {
@@ -4903,7 +4948,7 @@
       ]
     },
     "System.Collections.NonGeneric/4.3.0": {
-      "sha512": "/D3jtX0+u5+6rS3RGvTMyICPpIuzBgqtUYLjK1aXLua0nWH4JpM1H/tRk1Uxs6Fo0fe22jyJaTpoXPSu0il8Ug==",
+      "sha512": "prtjIEMhGUnQq6RnPEYLpFt8AtLbp9yq2zxOSrY7KJJZrw25Fi97IzBqY7iqssbM61Ek5b8f3MG/sG1N2sN5KA==",
       "type": "package",
       "path": "system.collections.nongeneric/4.3.0",
       "files": [
@@ -6278,11 +6323,12 @@
       ]
     },
     "System.Net.NameResolution/4.3.0": {
-      "sha512": "DPvMSdd32CbEOCTtOpO4nY9UvbP6LJe375F1yEQjy667WT5LEh1Ek2T4DSVw1STR0K3LSawWfBFwoeSG0TXFeA==",
+      "sha512": "AFYl08R7MrsrEjqpQWTZWBadqXyTzNDaWpMqyxhb0d6sGhV6xMDKueuBXlLL30gz+DIRY6MpdgnHWlCh5wmq9w==",
       "type": "package",
       "path": "system.net.nameresolution/4.3.0",
       "files": [
         ".nupkg.metadata",
+        ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
         "lib/MonoAndroid10/_._",
@@ -6506,7 +6552,7 @@
       ]
     },
     "System.Private.DataContractSerialization/4.3.0": {
-      "sha512": "wEjvYddMMRV04qSvr/3+v9YsjnYKjxR6riG749gI5DdqXKvJtAKJSfXDxefu7TxlKvGiufQd6mVsI/NMmBIg8A==",
+      "sha512": "yDaJ2x3mMmjdZEDB4IbezSnCsnjQ4BxinKhRAaP6kEgL6Bb6jANWphs5SzyD8imqeC/3FxgsuXT6ykkiH1uUmA==",
       "type": "package",
       "path": "system.private.datacontractserialization/4.3.0",
       "files": [
@@ -6783,7 +6829,7 @@
       ]
     },
     "System.Reflection.Metadata/1.6.0": {
-      "sha512": "I4aWCii7N1bmn43vviRfJQYW6UAco1G/CcjJouvgGdb/sr2BRTSnddhaPMg2oxu9VHFn8T1z3dTLq0pna8zmtA==",
+      "sha512": "COC1aiAJjCoA5GBF+QKL2uLqEBew4JsCkQmoHKbN3TlOZKa2fKLz5CpiRQKDz0RsAOEGsVKqOD5bomsXq/4STQ==",
       "type": "package",
       "path": "system.reflection.metadata/1.6.0",
       "files": [
@@ -7584,7 +7630,7 @@
       ]
     },
     "System.Security.AccessControl/4.5.0": {
-      "sha512": "6RQtcT+TyDgLUFsAnmmdfRRGdLYKxSZGkSPOd052tvYFxOTMaQb6ANlwhGqZtNO52PosaCoXu7uatFneujAxmA==",
+      "sha512": "vW8Eoq0TMyz5vAG/6ce483x/CP83fgm4SJe5P8Tb1tZaobcvPrbMEL7rhH1DRdrYbbb6F0vq3OlzmK0Pkwks5A==",
       "type": "package",
       "path": "system.security.accesscontrol/4.5.0",
       "files": [
@@ -7907,7 +7953,7 @@
       ]
     },
     "System.Security.Permissions/4.5.0": {
-      "sha512": "O+e9qamSTJ4YOJCpnLgsf9FTGfsxJv2On1OdYkhmd/XA5AYRvUatkz7Rp3dS9XR7rhVuklnjST1dRoMK7N4cGw==",
+      "sha512": "9gdyuARhUR7H+p5CjyUB/zPk7/Xut3wUSP8NJQB6iZr8L3XUXTMdoLeVAg9N4rqF8oIpE7MpdqHdDHQ7XgJe0g==",
       "type": "package",
       "path": "system.security.permissions/4.5.0",
       "files": [
@@ -7928,7 +7974,7 @@
       ]
     },
     "System.Security.Principal.Windows/4.5.0": {
-      "sha512": "WA9ETb/pY3BjnxKjBUHEgO59B7d/nnmjHFsqjJ2eDT780nD769CT1/bw2ia0Z6W7NqlcqokE6sKGKa6uw88XGA==",
+      "sha512": "U77HfRXlZlOeIXd//Yoj6Jnk8AXlbeisf1oq1os+hxOGVnuG+lGSfGqTwTZBoORFF6j/0q7HXIl8cqwQ9aUGqQ==",
       "type": "package",
       "path": "system.security.principal.windows/4.5.0",
       "files": [
@@ -8183,7 +8229,7 @@
       ]
     },
     "System.Text.Encodings.Web/4.5.0": {
-      "sha512": "JF+wDdfFiRl3rz3dPMfR6aR568AW2J5CUMmhSflgHDz4zbVK4/00ax8UHnHyEMvblPewgNugjuA4oyoL8Pex2g==",
+      "sha512": "Xg4G4Indi4dqP1iuAiMSwpiWS54ZghzR644OtsRCm/m/lBMG8dUBhLVN7hLm8NNrNTR+iGbshCPTwrvxZPlm4g==",
       "type": "package",
       "path": "system.text.encodings.web/4.5.0",
       "files": [
@@ -8678,7 +8724,7 @@
       ]
     },
     "System.Xml.XmlDocument/4.3.0": {
-      "sha512": "xsnq6w3/S+NeYkUtxoCEDAn2Z+AkgvGLvJnslrTRte4jEU+fkR3DVG+s0sBmQYQ4c3r8949PaGg8AnRb9bBc2w==",
+      "sha512": "lJ8AxvkX7GQxpC6GFCeBj8ThYVyQczx2+f/cWHJU8tjS7YfI6Cv6bon70jVEgs2CiFbmmM8b9j1oZVx0dSI2Ww==",
       "type": "package",
       "path": "system.xml.xmldocument/4.3.0",
       "files": [
@@ -8717,7 +8763,7 @@
       ]
     },
     "System.Xml.XmlSerializer/4.3.0": {
-      "sha512": "kwo6Kf+0jjEcmB+S2BI5SL0xHHRIBd0Cjf11BGliuZ3Va9V1hDbKZmq0mb7HO8QPlYYrq8eNToOzipfw6ARKEw==",
+      "sha512": "MYoTCP7EZ98RrANESW05J5ZwskKDoN0AuZ06ZflnowE50LTpbR5yRg3tHckTVm5j/m47stuGgCrCHWePyHS70Q==",
       "type": "package",
       "path": "system.xml.xmlserializer/4.3.0",
       "files": [
@@ -8812,28 +8858,25 @@
       "Microsoft.EntityFrameworkCore.Tools >= 3.0.0",
       "Microsoft.Extensions.Logging.Debug >= 3.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 3.0.0",
+      "NuGet.Core >= 2.14.0",
       "PrettyPrintNet >= 1.6.1",
       "VScodePrint2015 >= 14.0.8"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lília Matos\\.nuget\\packages\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\WINDOWS\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\TCC\\PortariaInteligente.csproj",
+      "projectUniqueName": "C:\\Users\\WINDOWS\\Desktop\\ADS\\TCC\\TCC\\PortariaInteligente.csproj",
       "projectName": "PortariaInteligente",
-      "projectPath": "C:\\TCC\\PortariaInteligente.csproj",
-      "packagesPath": "C:\\Users\\Lília Matos\\.nuget\\packages\\",
-      "outputPath": "C:\\TCC\\obj\\",
+      "projectPath": "C:\\Users\\WINDOWS\\Desktop\\ADS\\TCC\\TCC\\PortariaInteligente.csproj",
+      "packagesPath": "C:\\Users\\WINDOWS\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\WINDOWS\\Desktop\\ADS\\TCC\\TCC\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-      ],
       "configFilePaths": [
-        "C:\\Users\\Lília Matos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\WINDOWS\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8891,6 +8934,10 @@
             "target": "Package",
             "version": "[3.0.0, )"
           },
+          "NuGet.Core": {
+            "target": "Package",
+            "version": "[2.14.0, )"
+          },
           "PrettyPrintNet": {
             "target": "Package",
             "version": "[1.6.1, )"
@@ -8918,6 +8965,14 @@
           {
             "name": "Microsoft.NETCore.App.Host.win-x64",
             "version": "[3.0.3, 3.0.3]"
+          },
+          {
+            "name": "Microsoft.NETCore.App.Ref",
+            "version": "[3.0.0, 3.0.0]"
+          },
+          {
+            "name": "Microsoft.WindowsDesktop.App.Ref",
+            "version": "[3.0.0, 3.0.0]"
           }
         ],
         "frameworkReferences": {
@@ -8928,11 +8983,31 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.104\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   },
   "logs": [
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'Microsoft.Web.Xdt 2.1.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "Microsoft.Web.Xdt",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.0"
+      ]
+    },
+    {
+      "code": "NU1701",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "O pacote 'NuGet.Core 2.14.0' foi restaurado usando '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' em vez da estrutura de destino do projeto '.NETCoreApp,Version=v3.0'. Esse pacote pode não ser totalmente compatível com o seu projeto.",
+      "libraryId": "NuGet.Core",
+      "targetGraphs": [
+        ".NETCoreApp,Version=v3.0"
+      ]
+    },
     {
       "code": "NU1701",
       "level": "Warning",

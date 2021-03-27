@@ -66,10 +66,10 @@
         }
 
     </div>
+    <input type="submit" value="Editar Reunião" class="btn btn-primary" />
+    <input type="submit" value="Editar Convites" class="btn btn-primary" formaction="/Convites/Index?ReuniaoID=@Model.ReuniaoID" />
 </form>
 
 <div class="form-group">
-    <input type="submit" value="Editar Reunião" class="btn btn-primary" />
-    <input type="submit" value="Editar Convites" class="btn btn-primary" formaction="/Convites/Index?ReuniaoID=@Model.ReuniaoID" />
     <a asp-action="Index">Voltar para a Lista</a>
 </div>
