@@ -740,7 +740,6 @@ D:\TCC\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\Create.cshtml.g.cs
 D:\TCC\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\CreateConvites.cshtml.g.cs
 D:\TCC\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\Delete.cshtml.g.cs
 D:\TCC\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\Details.cshtml.g.cs
-D:\TCC\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\Edit - Cópia.cshtml.g.cs
 D:\TCC\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\Edit.cshtml.g.cs
 D:\TCC\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\ExibirConvites.cshtml.g.cs
 D:\TCC\obj\Debug\netcoreapp3.0\Razor\Views\Reunioes\ExibirReubiaoViewModel.cshtml.g.cs
@@ -768,3 +767,5 @@ D:\TCC\obj\Debug\netcoreapp3.0\PortariaInteligente.RazorTargetAssemblyInfo.cs
 D:\TCC\obj\Debug\netcoreapp3.0\PortariaInteligente.Views.pdb
 D:\TCC\obj\Debug\netcoreapp3.0\PortariaInteligente.csproj.CopyComplete
 D:\TCC\obj\Debug\netcoreapp3.0\PortariaInteligente.genruntimeconfig.cache
+D:\TCC\obj\Debug\netcoreapp3.0\Razor\Views\Visitantes\TermoDeUso.cshtml.g.cs
+D:\TCC\obj\Debug\netcoreapp3.0\Razor\Views\Visitantes\RegrasDeSeguranca.cshtml.g.cs

@@ -4,6 +4,20 @@
     ViewData["Title"] = "Create";
 }
 
+
+<head>
+    <title>Seu produto</title>
+    <meta charset="utf-8">
+
+    <!-- Isso é necessário para funcionar a versão mobile -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="//assets.locaweb.com.br/locastyle/2.0.6/stylesheets/locastyle.css">
+
+</head>
+
 <h3>Cadastrar Visitante</h3>
 <hr />
 <div class="row">
@@ -11,6 +25,7 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <h3>Dados Pessoais</h3> <br>
                 <label asp-for="VisitanteNome" class="control-label"></label>
                 <input asp-for="VisitanteNome" class="form-control" />
                 <span asp-validation-for="VisitanteNome" class="text-danger"></span>
@@ -22,51 +37,72 @@
             </div>
             <div class="form-group">
                 <label asp-for="VisitanteCel" class="control-label"></label>
-                <input asp-for="VisitanteCel" class="form-control" /> 
+                <input asp-for="VisitanteCel" class="form-control" />
                 <span asp-validation-for="VisitanteCel" class="text-danger"></span>
             </div>
-                <div class="form-group">
-                    <label asp-for="Empresa" class="control-label"></label>
-                    <input asp-for="Empresa" class="form-control" />
-                    <span asp-validation-for="Empresa" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="DocumentoID" class="control-label">Tipo do Documento </label>
-                    <select asp-for="DocumentoID" class="form-control" asp-items="ViewBag.DocumentoID"></select>
-                </div>
-                <div class="form-group">
-                    <label asp-for="DocumentoNumero" class="control-label"></label>
-                    <input asp-for="DocumentoNumero" class="form-control" />
-                    <span asp-validation-for="DocumentoNumero" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CarroMarca" class="control-label"></label>
-                    <input asp-for="CarroMarca" class="form-control" />
-                    <span asp-validation-for="CarroMarca" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CarroCor" class="control-label"></label>
-                    <input asp-for="CarroCor" class="form-control" />
-                    <span asp-validation-for="CarroCor" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CarroModelo" class="control-label"></label>
-                    <input asp-for="CarroModelo" class="form-control" />
-                    <span asp-validation-for="CarroModelo" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CarroPlaca" class="control-label"></label>
-                    <input asp-for="CarroPlaca" class="form-control" />
-                    <span asp-validation-for="CarroPlaca" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <input type="submit" value="Criar" class="btn btn-primary" />
-                </div>
-            </form>
-        </div>
+            <div class="form-group">
+                <label asp-for="Empresa" class="control-label"></label>
+                <input asp-for="Empresa" class="form-control" />
+                <span asp-validation-for="Empresa" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DocumentoID" class="control-label">Tipo do Documento </label>
+                <select asp-for="DocumentoID" class="form-control" asp-items="ViewBag.DocumentoID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="DocumentoNumero" class="control-label"></label>
+                <input asp-for="DocumentoNumero" class="form-control" />
+                <span asp-validation-for="DocumentoNumero" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <h3>Carro</h3> <br>
+                <label asp-for="CarroMarca" class="control-label"></label>
+                <input asp-for="CarroMarca" class="form-control" />
+                <span asp-validation-for="CarroMarca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarroCor" class="control-label"></label>
+                <input asp-for="CarroCor" class="form-control" />
+                <span asp-validation-for="CarroCor" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarroModelo" class="control-label"></label>
+                <input asp-for="CarroModelo" class="form-control" />
+                <span asp-validation-for="CarroModelo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="CarroPlaca" class="control-label"></label>
+                <input asp-for="CarroPlaca" class="form-control" />
+                <span asp-validation-for="CarroPlaca" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Criar" class="btn btn-primary" />
+            </div>
+        </form>
     </div>
+</div>
 
-    <div>
-        <a asp-action="Index">Voltar para a Lista</a>
-    </div>
+<h3>Termo de Uso</h3>
+<br>
+<div>
+    <a asp-action="TermoDeUso">Termo de Uso</a><p></p>
+    <p align="center">
+        <input type="radio" id="TermoDeUso" name="TermoDeUso">
+        <label for="TermoDeUso">  Lí e aceito o Termos de Uso desta aplicação</label><br>
+    </p>
+</div>
 
+<h3>Regras de Segurança</h3>
+<br>
+<div>
+    <a asp-action="RegrasDeSeguranca">Regras de Segurança</a><p></p>
+    <p align="center">
+        <input type="radio" id="RegrasdeSeguranca" name="RegrasdeSeguranca"> 
+        <label for="RegrasDeSeguranca">  Lí e aceito as regras de segurança</label><br>
+    </p>
+</div>
+
+<div>
+
+    <a asp-action="Index">Voltar para a Lista</a>
+</div>

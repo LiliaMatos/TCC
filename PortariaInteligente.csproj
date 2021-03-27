@@ -10,6 +10,10 @@
     <Compile Remove="Migrations\20201031183202_1Migracao.Designer.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Content Remove="Views\Reunioes\Edit - Cópia.cshtml" />
+  </ItemGroup>
+
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.0.0" />
