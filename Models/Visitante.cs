@@ -22,20 +22,13 @@ namespace PortariaInteligente.Models
         [DataType(DataType.EmailAddress)]
         public string VisitanteEmail { get; set; }
 
-<<<<<<< HEAD
 
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [Display(Name = "Celular")]
-        [DataType(DataType.PhoneNumber)]
-        public string VisitanteCel { get; set; }
-
-=======
         [Required(ErrorMessage = "O campo {0} é obrigatório"),
          Display(Name = "Celular"),
          DataType(DataType.PhoneNumber),
          StringLength(15, MinimumLength = 15)]
          public string VisitanteCel { get; set; }
->>>>>>> 2bb91b741d4870019c0c48ba08e3bea395ad6b5d
+
         
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [Display(Name = "Empresa")]
