@@ -24,7 +24,6 @@ namespace PortariaInteligente.Models
         [Required(ErrorMessage = "O campo {0} é obrigatório"),
          Display(Name = "Celular"),
          DataType(DataType.PhoneNumber),
-         RegularExpression(@"^[0-9]*$"),
          StringLength(15, MinimumLength = 15)]
          public string VisitanteCel { get; set; }
         
