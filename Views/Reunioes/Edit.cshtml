@@ -35,41 +35,45 @@
                 <span asp-validation-for="ReuniaoHora" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ReuniaoSala" class="control-label"></label>
-                <input asp-for="ReuniaoSala" class="form-control" />
-                <span asp-validation-for="ReuniaoSala" class="text-danger"></span>
+                <label asp-for="SalaID" class="control-label"></label>
+                <select asp-for="SalaID" class="form-control" asp-items="ViewBag.SalaID"></select>
             </div>
-
         </div>
     </div>
     <div class=" col-md-12">
         <h4>Convites</h4>
         <hr />
         <dl class="row">
-            <dt class="col-sm-5">
-                <strong>Nome</strong>
+            <dt class="col-sm-4">
+                <strong>Visitante</strong>
             </dt>
-            <dd class="col-sm-7">
+            <dt class="col-sm-4">
+                <strong>Empresa</strong>
+            </dt>
+            <dd class="col-sm-4">
                 <strong>Email</strong>
             </dd>
         </dl>
         @foreach (Convite p in Model.Convites)
         {
             <dl class="row">
-                <dt class="col-sm-5">
+                <dt class="col-sm-4">
                     @Html.DisplayFor(modelItem => p.Visitantes.VisitanteNome)
                 </dt>
-                <dd class="col-sm-7">
+                <dt class="col-sm-4">
+                    @Html.DisplayFor(modelItem => p.Visitantes.Empresa)
+                </dt>
+                <dd class="col-sm-4">
                     @Html.DisplayFor(modelItem => p.Visitantes.VisitanteEmail)
                 </dd>
             </dl>
         }
 
     </div>
+    <input type="submit" value="Editar Reunião" class="btn btn-primary" />
+    <input type="submit" value="Editar Convites" class="btn btn-primary" formaction="/Convites/Index?ReuniaoID=@Model.ReuniaoID" />
 </form>
 
 <div class="form-group">
-    <input type="submit" value="Editar Reunião" class="btn btn-primary" />
-    <input type="submit" value="Editar Convites" class="btn btn-primary" formaction="/Convites/Index?ReuniaoID=@Model.ReuniaoID" />
     <a asp-action="Index">Voltar para a Lista</a>
 </div>

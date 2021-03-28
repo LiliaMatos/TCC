@@ -21,7 +21,7 @@
                 <input type="submit" value="Filtrar" />
             </div>
             <div class="form-group">
-                <label class="col-form-label">Organizador:</label>
+                <label class="col-form-label">Visitado:</label>
                 <input type="text" name="visitado">
                 <input type="submit" value="Filtrar" />
             </div>
@@ -35,51 +35,51 @@
                 @Html.DisplayNameFor(model => model.Reunioes.ReuniaoHora)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.Reunioes.Visitados.VisitadoNome)*@
-                Nome do Visitado
+                @Html.DisplayNameFor(model => model.Reunioes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reunioes.Visitados)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Reunioes.Visitados.VisitadoCel)
             </th>
             <th>
-                @*@Html.DisplayNameFor(model => model.Visitantes.VisitanteNome)*@
-                Nome do Visitante
+                @Html.DisplayNameFor(model => model.Visitantes)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Visitantes.Empresa)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Reunioes.ReuniaoNome)
-            </th>
+
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reunioes.ReuniaoHora)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reunioes.Visitados.VisitadoNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reunioes.Visitados.VisitadoCel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Visitantes.VisitanteNome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Visitantes.Empresa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Reunioes.ReuniaoNome)
-            </td>
-            <td>
-                <a asp-action="ExibirConvites" asp-route-id="@(item.VisitanteID + "_" + item.ReuniaoID)">ver</a>
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reunioes.ReuniaoHora)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reunioes.ReuniaoNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reunioes.Visitados.VisitadoNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reunioes.Visitados.VisitadoCel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Visitantes.VisitanteNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Visitantes.Empresa)
+                </td>
+
+                <td>
+                    <a asp-action="ExibirConvites" asp-route-id="@(item.VisitanteID + "_" + item.ReuniaoID)">Consultar</a>
+                </td>
+            </tr>
         }
     </tbody>
 </table>

@@ -10,16 +10,19 @@
     <thead bgcolor="#F0F8FF">
         <tr>
             <th>
+                @Html.DisplayNameFor(model => model.Visitados)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReuniaoData)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ReuniaoHora)
+            </th>
+            <th>
                 @Html.DisplayNameFor(model => model.ReuniaoNome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ReuniaoData)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReuniaoData)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Visitados)
+                @Html.DisplayNameFor(model => model.Salas.SalaNome)
             </th>
         </tr>
     </thead>
@@ -27,7 +30,7 @@
 
         <tr>
             <td>
-                @Html.DisplayFor(model => model.ReuniaoNome)
+                @Html.DisplayFor(model => model.Visitados.VisitadoNome)
             </td>
             <td>
                 @Html.DisplayFor(model => model.ReuniaoData)
@@ -36,18 +39,24 @@
                 @Html.DisplayFor(model => model.ReuniaoHora)
             </td>
             <td>
-                @Html.DisplayFor(model => model.Visitados.VisitadoNome)
+                @Html.DisplayFor(model => model.ReuniaoNome)
             </td>
-
+            <td>
+                @Html.DisplayFor(model => model.Salas.SalaNome)
+            </td>
         </tr>
-
     </tbody>
     <thead bgcolor="#F0F8FF">
         <tr>
             <th>
-                Convidados
+                Visitante
             </th>
-            <th></th>
+            <th>
+                Empresa
+            </th>
+            <th>
+                E-mail
+            </th>
         </tr>
     </thead>
     <tbody>
@@ -56,6 +65,9 @@
             <tr>
                 <td>
                     @Html.DisplayFor(modelItem => p.Visitantes.VisitanteNome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => p.Visitantes.Empresa)
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => p.Visitantes.VisitanteEmail)
