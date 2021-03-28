@@ -39,6 +39,11 @@ namespace PortariaInteligente.Controllers
             }
             return View(await visitantes.ToListAsync());
         }
+        // GET: TermoDeUso
+        public IActionResult TermoDeUso()
+        {
+            return View();
+        }
 
         // GET: Visitantes/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -57,6 +62,13 @@ namespace PortariaInteligente.Controllers
 
             return View(visitante);
         }
+
+        // GET: RegrasDeSeguranca
+        public IActionResult RegrasDeSeguranca()
+        {
+            return View();
+        }
+
 
         // GET: Visitantes/Create
         public IActionResult Create()
