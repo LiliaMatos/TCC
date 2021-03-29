@@ -1,16 +1,18 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace PortariaInteligente.Models
 {
-    public class Documento
+    public enum Documento
     {
-        [Key]
-        public int DocumentoID { get; set; }
+        [Display(Name = "RG")]
+        RG = 1,
+        [Display(Name = "CNH")]
+        CNH = 2,
+        [Display(Name = "RNE")]
+        RNE = 3,
+        [Display(Name = "Passaporte")]
+        Passaporte = 4
 
-        [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [Display(Name = "Tipo do Documento")]
-        public string DocumentoNome { get; set; }
-        public virtual ICollection<Visitante> Visitantes { get; set; }
+
     }
 }

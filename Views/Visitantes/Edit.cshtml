@@ -25,7 +25,7 @@
             </div>
             <div class="form-group">
                 <label asp-for="VisitanteCel" class="control-label"></label>
-                <input asp-for="VisitanteCel" class="form-control" />
+                <input asp-for="VisitanteCel" class="form-control" oninput="this.value=this.value.replace(/[^0-9]/g,'');" maxlength="11" />
                 <span asp-validation-for="VisitanteCel" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -34,9 +34,10 @@
                 <span asp-validation-for="Empresa" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DocumentoID" class="control-label"></label>
-                <select asp-for="DocumentoID" class="form-control" asp-items="ViewBag.DocumentoID"></select>
-                <span asp-validation-for="DocumentoID" class="text-danger"></span>
+                <label asp-for="Documentos" class="control-label"></label>
+                <select asp-for="Documentos" class="form-control" asp-items="Html.GetEnumSelectList<Documento>()"></select>
+                @*<select asp-for="Estados" asp-items="Html.GetEnumSelectList<Estado>()"></select>*@
+                <span asp-validation-for="Documentos" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DocumentoNumero" class="control-label"></label>

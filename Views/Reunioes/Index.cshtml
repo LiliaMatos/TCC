@@ -17,12 +17,12 @@
             <div class="form-group">
                 <label class="col-form-label"><strong>Assunto:</strong></label>
                 <input type="text" name="assunto">
-                <input type="submit" value="Filtrar" class="btn btn-primary btn-sm"  />
+                <input type="submit" value="Filtrar" class="btn btn-primary btn-sm" />
             </div>
             <div class="form-group">
                 <label class="col-form-label"><strong>Visitado:</strong></label>
                 <input type="text" name="visitado">
-                <input type="submit" value="Filtrar" class="btn btn-primary btn-sm"  />
+                <input type="submit" value="Filtrar" class="btn btn-primary btn-sm" />
             </div>
         </form>
     </div>
@@ -34,7 +34,7 @@
             </h4>
             <hr />
         </form>
-        <br/>
+        <br />
     </div>
 </div>
 
@@ -54,10 +54,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.ReuniaoHora)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ReuniaoSala)
-            </th>
-            <th></th>
         </tr>
     </thead>
     <tbody>
@@ -76,9 +72,7 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.ReuniaoHora)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ReuniaoSala)
-                </td>
+
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ReuniaoID">Editar</a> |
                     <a asp-action="Details" asp-route-id="@item.ReuniaoID">Consultar</a> |
@@ -88,3 +82,5 @@
         }
     </tbody>
 </table>
+
+<p class="table-warning">@ViewBag.Mensagem</p>

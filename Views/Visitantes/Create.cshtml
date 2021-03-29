@@ -37,7 +37,12 @@
             </div>
             <div class="form-group">
                 <label asp-for="VisitanteCel" class="control-label"></label>
-                <input asp-for="VisitanteCel" class="form-control" />
+                <input asp-for="VisitanteCel"
+                       class="form-control"
+                       oninput="mask(this, mphone);"
+                       onkeyup="mask(this, mphone);"
+                       onkeypress="mask(this, mphone);"
+                       onblur="mask(this, mphone);" />
                 <span asp-validation-for="VisitanteCel" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -46,8 +51,9 @@
                 <span asp-validation-for="Empresa" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="DocumentoID" class="control-label">Tipo do Documento </label>
-                <select asp-for="DocumentoID" class="form-control" asp-items="ViewBag.DocumentoID"></select>
+                <label asp-for="Empresa" class="control-label">Tipo de Documentos</label>
+                <select asp-for="Documentos" class="form-control" asp-items="Html.GetEnumSelectList<Documento>()"></select>
+                <span asp-validation-for="Documentos" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="DocumentoNumero" class="control-label"></label>
@@ -75,34 +81,65 @@
                 <input asp-for="CarroPlaca" class="form-control" />
                 <span asp-validation-for="CarroPlaca" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <input type="submit" value="Criar" class="btn btn-primary" />
             </div>
+
+            <h3>Termo de Uso</h3>
+            <br>
+            <div>
+                <a asp-action="TermoDeUso">Termo de Uso</a><p></p>
+                <p align="center">
+                    <input type="radio" id="TermoDeUso" name="TermoDeUso">
+                    <label for="TermoDeUso">  Lí e aceito o Termos de Uso desta aplicação</label><br>
+                </p>
+            </div>
+
+            <h3>Regras de Segurança</h3>
+            <br>
+            <div>
+                <a asp-action="RegrasDeSeguranca">Regras de Segurança</a><p></p>
+                <p align="center">
+                    <input type="radio" id="RegrasdeSeguranca" name="RegrasdeSeguranca">
+                    <label for="RegrasDeSeguranca">  Lí e aceito as regras de segurança</label><br>
+                </p>
+            </div>
+
+            <div>
+
+                <a asp-action="Index">Voltar para a Lista</a>
+            </div>
+
         </form>
     </div>
 </div>
 
-<h3>Termo de Uso</h3>
-<br>
-<div>
-    <a asp-action="TermoDeUso">Termo de Uso</a><p></p>
-    <p align="center">
-        <input type="radio" id="TermoDeUso" name="TermoDeUso">
-        <label for="TermoDeUso">  Lí e aceito o Termos de Uso desta aplicação</label><br>
-    </p>
-</div>
+<script>
+    function mask(o, f) {
+        setTimeout(function () {
+            var v = f(o.value);
+            if (v != o.value) {
+                o.value = v;
+            }
+        }, 1);
+    }
 
-<h3>Regras de Segurança</h3>
-<br>
-<div>
-    <a asp-action="RegrasDeSeguranca">Regras de Segurança</a><p></p>
-    <p align="center">
-        <input type="radio" id="RegrasdeSeguranca" name="RegrasdeSeguranca"> 
-        <label for="RegrasDeSeguranca">  Lí e aceito as regras de segurança</label><br>
-    </p>
-</div>
-
-<div>
-
-    <a asp-action="Index">Voltar para a Lista</a>
-</div>
+    function mphone(v) {
+        var r = v.replace(/\D/g, "");
+        r = r.replace(/^0/, "");
+        if (r.length > 10) {
+            // 11+ digits. Format as 5+4.
+            r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
+        }
+        else if (r.length > 5) {
+            // 6..10 digits. Format as 4+4
+            r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
+        }
+        else if (r.length > 2) {
+            // 3..5 digits. Add (0XX..)
+            r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
+        }
+        return r;
+    }
+</script>

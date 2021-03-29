@@ -3,16 +3,18 @@ using System.ComponentModel.DataAnnotations;
 
 namespace PortariaInteligente.Models
 {
-    public class Papel
+    public enum Papel
     {
-        [Key] public int PapelID { get; set; }
-
-        [Required]
-        [Display(Name = "Nome do Papel")]
-        public string PapelNome { get; set; }
-
-        public virtual ICollection<PapelVisitado> PapeisVisitados{ get; set; }
-        public ICollection<Visitante> Visitantes { get; set; }
+        [Display(Name = "Visitante")]
+        Visitante = 1,
+        [Display(Name = "Visitado")]
+        Visitado = 2,
+        [Display(Name = "Portaria")]
+        Portaria = 3,
+        [Display(Name = "Recepção")]
+        Recepcao = 4,
+        [Display(Name = "Administrador")]
+        Administrador = 5
 
     }
 }

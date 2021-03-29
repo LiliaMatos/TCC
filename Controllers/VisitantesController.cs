@@ -23,7 +23,7 @@ namespace PortariaInteligente.Controllers
         public async Task<IActionResult> Index(string nome, string empresa, string email)
         {
             var visitantes = from m in _context.Visitantes
-                         select m;
+                             select m;
 
             if (!String.IsNullOrEmpty(nome))
             {
@@ -54,8 +54,6 @@ namespace PortariaInteligente.Controllers
             }
 
             var visitante = await _context.Visitantes
-                .Include(v => v.Documentos)
-                .Include(v => v.Papeis)
                 .FirstOrDefaultAsync(m => m.VisitanteID == id);
             if (visitante == null)
             {
@@ -75,8 +73,7 @@ namespace PortariaInteligente.Controllers
         // GET: Visitantes/Create
         public IActionResult Create()
         {
-            ViewData["DocumentoID"] = new SelectList(_context.Documentos, "DocumentoID", "DocumentoNome");
-            ViewData["PapelID"] = new SelectList(_context.Papeis, "PapelID", "PapelNome");
+            ViewData["Documento"] = new SelectList("Documento", "Documentos");
             return View();
         }
 
@@ -85,17 +82,19 @@ namespace PortariaInteligente.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("VisitanteID,VisitanteNome,VisitanteEmail,VisitanteCel,Empresa,PapelID,DocumentoID,DocumentoNumero,CarroMarca,CarroCor,CarroModelo,CarroPlaca")] Visitante visitante)
+        public async Task<IActionResult> Create([Bind("VisitanteID,VisitanteNome,VisitanteEmail,VisitanteCel,Empresa,Documentos, Papeis, DocumentoNumero,CarroMarca,CarroCor,CarroModelo,CarroPlaca")] Visitante visitante)
         {
-            visitante.PapelID = 1;
+           
+            //SelectList(IEnumerable items, object selectedValue);
             if (ModelState.IsValid)
             {
+                visitante.Papeis = Papel.Visitante;
+               // visitante.Documentos = Documento.CNH;
                 _context.Add(visitante);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DocumentoID"] = new SelectList(_context.Documentos, "DocumentoID", "DocumentoNome", visitante.DocumentoID);
-            ViewData["PapelID"] = new SelectList(_context.Papeis, "PapelID", "PapelNome", visitante.PapelID);
+            ViewData["Documentos"] = new SelectList("Documentos", "Documento");
             return View(visitante);
         }
 
@@ -112,8 +111,7 @@ namespace PortariaInteligente.Controllers
             {
                 return NotFound();
             }
-            ViewData["DocumentoID"] = new SelectList(_context.Documentos, "DocumentoID", "DocumentoNome", visitante.DocumentoID);
-            ViewData["PapelID"] = new SelectList(_context.Papeis, "PapelID", "PapelNome", visitante.PapelID);
+            //ViewData["Documento"] = new SelectList("Documento", "Documentos");
             return View(visitante);
         }
 
@@ -122,9 +120,8 @@ namespace PortariaInteligente.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("VisitanteID,VisitanteNome,VisitanteEmail,VisitanteCel,Empresa,PapelID,DocumentoID,DocumentoNumero,CarroMarca,CarroCor,CarroModelo,CarroPlaca")] Visitante visitante)
+        public async Task<IActionResult> Edit(int id, [Bind("VisitanteID,VisitanteNome,VisitanteEmail,VisitanteCel,Empresa,Documentos,Papeis,DocumentoNumero,CarroMarca,CarroCor,CarroModelo,CarroPlaca")] Visitante visitante)
         {
-            visitante.PapelID = 1;
             if (id != visitante.VisitanteID)
             {
                 return NotFound();
@@ -134,6 +131,7 @@ namespace PortariaInteligente.Controllers
             {
                 try
                 {
+                    visitante.Papeis = Papel.Visitante;
                     _context.Update(visitante);
                     await _context.SaveChangesAsync();
                 }
@@ -150,8 +148,7 @@ namespace PortariaInteligente.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["DocumentoID"] = new SelectList(_context.Documentos, "DocumentoID", "DocumentoNome", visitante.DocumentoID);
-            ViewData["PapelID"] = new SelectList(_context.Papeis, "PapelID", "PapelNome", visitante.PapelID);
+            //ViewData["Documento"] = new SelectList("Documento", "Documentos");
             return View(visitante);
         }
 
@@ -164,8 +161,6 @@ namespace PortariaInteligente.Controllers
             }
 
             var visitante = await _context.Visitantes
-                .Include(v => v.Documentos)
-                .Include(v => v.Papeis)
                 .FirstOrDefaultAsync(m => m.VisitanteID == id);
             if (visitante == null)
             {

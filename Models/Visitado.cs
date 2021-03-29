@@ -9,13 +9,14 @@ namespace PortariaInteligente.Models
         public int VisitadoID { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
-        [Display(Name = "Nome")]
+        [Display(Name = "Visitado")]
         [RegularExpression(@"^[A-Z]+[a-zA-Z""'\s-]*$")]
         [StringLength(150, MinimumLength = 5)]
         public string VisitadoNome { get; set; }
 
         [Required(ErrorMessage = "O campo {0} é obrigatório")]
         [Display(Name = "E-mail")]
+        [RegularExpression(@"^[a-zA-Z]+(([\'\,\.\- ][a-zA-Z ])?[a-zA-Z]*)*\s+<(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})>$|^(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})$")]
         [DataType(DataType.EmailAddress)]
         public string VisitadoEmail { get; set; }
 
@@ -25,7 +26,6 @@ namespace PortariaInteligente.Models
         public string VisitadoCel { get; set; }
 
         public virtual ICollection<Reuniao> Reunioes { get; set; }
-        public virtual ICollection<PapelVisitado> PapeisVisitados { get; set; }
 
     }
 }

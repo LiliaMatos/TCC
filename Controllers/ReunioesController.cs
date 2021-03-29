@@ -26,8 +26,15 @@ namespace PortariaInteligente.Controllers
         // GET: Reunioes
         public async Task<IActionResult> Index(DateTime data, string assunto, string visitado)
         {
-
-            var reunioes = from m in _context.Reunioes.Include("Visitados") select m;
+            var reunioes = from m in _context.Reunioes
+                           .Include("Visitados")
+                           where m.ReuniaoData >= DateTime.Today
+                           select m;
+            //A mensagem nunca é exibida.
+            if (reunioes.Count() < 1)
+                TempData["Mensagem"] = "Não existem reuniões agendadas";
+            //ModelState.AddModelError("ReuniaoData", "Não existem reuniões agendadas");
+      
 
             if (!String.IsNullOrEmpty(assunto))
             {
@@ -45,10 +52,10 @@ namespace PortariaInteligente.Controllers
         }
 
         // GET: Reunioes/ExibirReubiaoViewModel
-        public IActionResult ExibirReubiaoViewModel()
+        public IActionResult ExibirReuniaoViewModel()
         {
             //Exercício com ViewModel
-            /*Fazer uma caixa de seleção com a relação das reuniões existentes e apartir de ID daquela selecionada relacionar os convidados.
+            /*Fazer uma caixa de seleção com a relação das reuniões existentes e a partir de ID daquela selecionada relacionar os convidados.
              Por hora mostra uma reunião com ID em hardcoding e todos os visitantes cadastrados
              */
 
@@ -83,13 +90,14 @@ namespace PortariaInteligente.Controllers
         public IActionResult Create()
         {
             ViewData["VisitadoID"] = new SelectList(_context.Visitados, "VisitadoID", "VisitadoNome");
+            ViewData["SalaID"] = new SelectList(_context.Salas, "SalaID", "SalaNome");
             return View(new Reuniao());
         }
 
         // POST: Reunioes/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ReuniaoID,VisitadoID,ReuniaoNome,ReuniaoData,ReuniaoHora,ReuniaoSala, Convites")] Reuniao reuniao)
+        public async Task<IActionResult> Create([Bind("ReuniaoID,VisitadoID,ReuniaoNome,ReuniaoData,ReuniaoHora,SalaID, Convites")] Reuniao reuniao)
         {
             //Testa se a data é anterior a data atual para não permitir criação de reuniõe no passado, mas não está funcionando, o resultado dá sempre zero.
 
@@ -99,13 +107,13 @@ namespace PortariaInteligente.Controllers
             if (ModelState.IsValid)
             {
                 _context.Add(reuniao);
-                int idReuniao = reuniao.ReuniaoID;
+                //int idReuniao = reuniao.ReuniaoID;
                 await _context.SaveChangesAsync();
-                // return RedirectToAction("Index");
                 return RedirectToAction("CreateConvites", new { ReuniaoID = reuniao.ReuniaoID });
 
             }
             ViewData["VisitadoID"] = new SelectList(_context.Visitados, "VisitadoID", "VisitadoNome");
+            ViewData["SalaID"] = new SelectList(_context.Salas, "SalaID", "SalaNome");
             return View(reuniao);
         }
 
@@ -164,14 +172,15 @@ namespace PortariaInteligente.Controllers
             }), "VisitanteID", "VisitanteNome");
 
             ViewData["VisitadoID"] = new SelectList(_context.Visitados, "VisitadoID", "VisitadoNome");
+            ViewData["SalaID"] = new SelectList(_context.Salas, "SalaID", "SalaNome");
             return View(reuniao);
         }
 
         // POST: Reunioes/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ReuniaoID,VisitadoID,ReuniaoNome,ReuniaoData,ReuniaoHora," +
-            "ReuniaoSala, Convites")] Reuniao reuniao)
+        public async Task<IActionResult> Edit(int id, [Bind("ReuniaoID,VisitadoID,SalaID,ReuniaoNome,ReuniaoData,ReuniaoHora,Convites")] Reuniao reuniao)
+        //ReuniaoSala, 
         {
             if (id != reuniao.ReuniaoID)
             {
@@ -206,7 +215,7 @@ namespace PortariaInteligente.Controllers
             }), "VisitanteID", "VisitanteNome");
 
             ViewData["VisitadoID"] = new SelectList(_context.Visitados, "VisitadoID", "VisitadoNome", reuniao.VisitadoID);
-
+            ViewData["SalaID"] = new SelectList(_context.Salas, "SalaID", "SalaNome", reuniao.SalaID);
             return View(reuniao);
         }
 
@@ -241,16 +250,11 @@ namespace PortariaInteligente.Controllers
         }
 
         // GET: PainelPortaria
-        public async Task<IActionResult> PainelPortaria(DateTime data, string visitante, string visitado)
+        public async Task<IActionResult> PainelPortaria(string visitante, string visitado)
         {
 
-            var convites = from m in _context.Convites.Include("Visitantes").Include("Reunioes").Include("Reunioes.Visitados") where m.Reunioes.ReuniaoData == DateTime.Today && m.Confirmado == false select m;
+            var convites = from m in _context.Convites.Include("Visitantes").Include("Reunioes").Include("Reunioes.Visitados") where m.Reunioes.ReuniaoData == DateTime.Today && m.LiberadoPortaria == false select m;
 
-
-            if (data.Year != 0001)
-            {
-                convites = convites.Where(s => s.Reunioes.ReuniaoData == data);
-            }
             if (!String.IsNullOrEmpty(visitante))
             {
                 convites = convites.Where(s => s.Visitantes.VisitanteNome.Contains(visitante));
@@ -290,7 +294,8 @@ namespace PortariaInteligente.Controllers
         // POST: Reunioes/AddConvite
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult AddConvite([Bind("ReuniaoID,VisitadoID,ReuniaoNome,ReuniaoData,ReuniaoHora,ReuniaoSala, Convites")] Reuniao reuniao)
+        public IActionResult AddConvite([Bind("ReuniaoID,VisitadoID,ReuniaoNome,ReuniaoData,ReuniaoHora, Convites")] Reuniao reuniao)
+        //ReuniaoSala,
         {
             reuniao.Convites.Add(new Convite());
 
@@ -364,70 +369,10 @@ namespace PortariaInteligente.Controllers
                 return NotFound();
             }
 
-            convite.Confirmado = true;
+            convite.LiberadoPortaria = true;
             await _context.SaveChangesAsync();
 
             return RedirectToAction("PainelPortaria");
         }
-
-        /*
-        // GET: Reunioes/Criar
-        public IActionResult Criar()
-        {
-            ViewData["VisitadoID"] = new SelectList(_context.Visitados, "VisitadoID", "VisitadoNome");
-            return View(new Reuniao());
-        }
-
-        // POST: Reunioes/Criar
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Criar([Bind("ReuniaoID,VisitadoID,ReuniaoNome,ReuniaoData,ReuniaoHora,ReuniaoSala")] Reuniao reuniao)
-        {
-            _context.Add(reuniao);
-            int idReuniao = reuniao.ReuniaoID;
-
-            if (ModelState.IsValid)
-            {       
-                    await _context.SaveChangesAsync();
-                //return RedirectToAction("Convites", "Create");
-                // return RedirectToRoute(new { controller = "Convites", action = "Create", id = idReuniao });
-                return RedirectToAction("Convites", "Create");
-            }
-            //return View(reuniao);
-            return RedirectToRoute(new { controller = "Convites", action = "Create", id = idReuniao });
-        }
-        */
-
-
-        /*
-          // POST: Reunioes/Create
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ReuniaoID,VisitadoID,ReuniaoNome,ReuniaoData,ReuniaoHora,ReuniaoSala, Convites")] Reuniao reuniao)
-        {
-            if (ModelState.IsValid)
-            {
-                if (reuniao.Convites.Select(c=> c.VisitanteID).Distinct().Count() != reuniao.Convites.Count())
-                {
-                    ModelState.AddModelError("Convites[0].VisitanteID", "Já existe um convite para este visitante");
-                }
-                else 
-                {
-                    _context.Add(reuniao);
-                    int idReuniao = reuniao.ReuniaoID;
-                    await _context.SaveChangesAsync();
-                    // return RedirectToAction("Index");
-                    return RedirectToAction("CreateConvites");
-                }
-            }
-            ViewData["VisitanteID"] = new SelectList(_context.Visitantes.Select(x => new { 
-            x.VisitanteID, VisitanteNome = x.VisitanteNome + " - " +x.VisitanteEmail
-            }), "VisitanteID", "VisitanteNome");
-            ViewData["VisitadoID"] = new SelectList(_context.Visitados, "VisitadoID", "VisitadoNome");
-            return View(reuniao);
-        }
-         
-         
-         */
     }
 }
