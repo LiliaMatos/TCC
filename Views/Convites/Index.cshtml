@@ -43,10 +43,13 @@ else
                 </td>
 
                 <td>
-                    @Html.ActionLink("Detalhes", "Details", new { id = item.VisitanteID + "_" + item.ReuniaoID }) |
+                    @*@Html.ActionLink("Detalhes", "Details", new { id = item.VisitanteID + "_" + item.ReuniaoID }) |*@
                     @Html.ActionLink("Excluir", "Delete", new { id = item.VisitanteID + "_" + item.ReuniaoID })
                 </td>
             </tr>
         }
     </tbody>
 </table>
+<div>
+    <a asp-controller="Reunioes" asp-action="Index">Voltar para a Lista</a>
+</div>
