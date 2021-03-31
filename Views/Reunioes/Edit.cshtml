@@ -4,9 +4,11 @@
     ViewData["Title"] = "Edit";
 }
 
-<h3>Editar Reunião</h3>
+<h3>Editar</h3>
 <hr />
 <form asp-action="Edit">
+    <h4>Reunião</h4>
+    <hr />
     <div class="row">
         <div class="col-md-6">
             <input type="hidden" asp-for="ReuniaoID">
@@ -39,41 +41,52 @@
                 <select asp-for="SalaID" class="form-control" asp-items="ViewBag.SalaID"></select>
             </div>
         </div>
-    </div>
-    <div class=" col-md-12">
-        <h4>Convites</h4>
-        <hr />
-        <dl class="row">
-            <dt class="col-sm-4">
-                <strong>Visitante</strong>
-            </dt>
-            <dt class="col-sm-4">
-                <strong>Empresa</strong>
-            </dt>
-            <dd class="col-sm-4">
-                <strong>Email</strong>
-            </dd>
-        </dl>
-        @foreach (Convite p in Model.Convites)
-        {
+        <div class=" col-md-12">
+            <input type="submit" value="Salvar Alterações na Reunião" class="btn btn-primary" />
+            <br />
+            <br />
+            <hr />
+        </div>
+
+        <div class=" col-md-12">
+            <h4>Convites</h4>
+            <hr />
             <dl class="row">
                 <dt class="col-sm-4">
-                    @Html.DisplayFor(modelItem => p.Visitantes.VisitanteNome)
+                    <strong>Visitante</strong>
                 </dt>
                 <dt class="col-sm-4">
-                    @Html.DisplayFor(modelItem => p.Visitantes.Empresa)
+                    <strong>Empresa</strong>
                 </dt>
-                <dd class="col-sm-4">
-                    @Html.DisplayFor(modelItem => p.Visitantes.VisitanteEmail)
-                </dd>
+                <dt class="col-sm-4">
+                    <strong>Email</strong>
+                </dt>
             </dl>
-        }
-
+            <hr />
+            @foreach (Convite p in Model.Convites)
+            {
+                <dl class="row">
+                    <dd class="col-sm-4">
+                        @Html.DisplayFor(modelItem => p.Visitantes.VisitanteNome)
+                    </dd>
+                    <dd class="col-sm-4">
+                        @Html.DisplayFor(modelItem => p.Visitantes.Empresa)
+                    </dd>
+                    <dd class="col-sm-4">
+                        @Html.DisplayFor(modelItem => p.Visitantes.VisitanteEmail)
+                    </dd>
+                </dl>
+            }
+        </div>
     </div>
-    <input type="submit" value="Editar Reunião" class="btn btn-primary" />
-    <input type="submit" value="Editar Convites" class="btn btn-primary" formaction="/Convites/Index?ReuniaoID=@Model.ReuniaoID" />
+    <div class=" col-md-12">
+        <input type="submit" value="Editar Convites" class="btn btn-primary" formaction="/Convites/Index?ReuniaoID=@Model.ReuniaoID" />
+         <hr />
+    </div>
 </form>
 
+
 <div class="form-group">
+    <br />
     <a asp-action="Index">Voltar para a Lista</a>
 </div>
