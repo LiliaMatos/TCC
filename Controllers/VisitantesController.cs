@@ -45,6 +45,27 @@ namespace PortariaInteligente.Controllers
             return View();
         }
 
+
+        // GET: AutoCadastro
+        public IActionResult AutoCadastro()
+        {
+            return View();
+
+        }
+
+        // GET: VisitantePainel
+        public IActionResult VisitantePainel()
+        {
+            return View();
+
+        }
+
+        // GET: Lgpd
+        public IActionResult Lgpd()
+        {
+            return View();
+
+        }
         // GET: Visitantes/Details/5
         public async Task<IActionResult> Details(int? id)
         {
