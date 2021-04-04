@@ -146,7 +146,6 @@ namespace PortariaInteligente.Controllers
             }
             ViewData["ReuniaoID"] = new SelectList(_context.Reunioes, "ReuniaoID", "ReuniaoNome", convite.ReuniaoID);
             ViewData["VisitanteID"] = new SelectList(_context.Visitantes, "VisitanteID", "VisitanteNome", convite.VisitanteID);
-            //Faz o quê e quando?
             return View(convite);
         }
 
@@ -277,6 +276,7 @@ namespace PortariaInteligente.Controllers
                 Include("Visitados").
                 Include("Convites").
                 Include("Convites.Visitantes").
+                Include("Salas").
                 FirstOrDefault(x => x.ReuniaoID == id);
             return (listaTodasReunioes);
         }

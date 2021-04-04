@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -20,15 +21,15 @@ namespace PortariaInteligente.Controllers
         }
 
         // GET: Convites
-        public async Task<IActionResult> Index(int ? ReuniaoID)
+        public async Task<IActionResult> Index(int? ReuniaoID)
         {
             var applicationDbContext = _context.Convites.Include(c => c.Reunioes).Include(c => c.Visitantes);
             if (ReuniaoID.HasValue)
             {
                 ViewData["ReuniaoID"] = ReuniaoID;
-                return View(await applicationDbContext.Where(c => c.ReuniaoID ==  ReuniaoID).ToListAsync());
+                return View(await applicationDbContext.Where(c => c.ReuniaoID == ReuniaoID).ToListAsync());
             }
-            
+
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -72,7 +73,7 @@ namespace PortariaInteligente.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("VisitanteID,ReuniaoID")] Convite convite)
         {
-            if (ConviteExists(convite.VisitanteID +"_"+convite.ReuniaoID))
+            if (ConviteExists(convite.VisitanteID + "_" + convite.ReuniaoID))
             {
                 ModelState.AddModelError("VisitanteID", "Já existe um convite para este visitante");
             }
@@ -119,7 +120,7 @@ namespace PortariaInteligente.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(string id, [Bind("VisitanteID,ReuniaoID")] Convite convite)
         {
-  
+
 
             if (ModelState.IsValid)
             {
@@ -169,6 +170,7 @@ namespace PortariaInteligente.Controllers
             }
 
             return View(convite);
+
         }
 
         // POST: Convites/Delete/5
@@ -183,7 +185,10 @@ namespace PortariaInteligente.Controllers
             var convite = await _context.Convites.FindAsync(reuniaoID, visitanteID);
             _context.Convites.Remove(convite);
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            //Retorna a pagina Reunioes/Details cujo ID é identificado no métod0 Delete
+            return RedirectToRoute(new { controller = "Reunioes", action = "Details", id = reuniaoID });
+   
+      
         }
 
         private bool ConviteExists(string id)
@@ -193,7 +198,7 @@ namespace PortariaInteligente.Controllers
             var visitanteID = int.Parse(chaves[0]);
             var reuniaoID = int.Parse(chaves[1]);
 
-            return _context.Convites.Any(e => e.ReuniaoID == reuniaoID && e.VisitanteID == visitanteID) ;
+            return _context.Convites.Any(e => e.ReuniaoID == reuniaoID && e.VisitanteID == visitanteID);
         }
     }
 }
