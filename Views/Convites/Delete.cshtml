@@ -28,7 +28,9 @@
     <form asp-action="Delete">
         <input type="hidden" asp-for="VisitanteID" />
         <input type="hidden" asp-for="ReuniaoID" />
-        <input type="submit" value="Excluir" class="btn btn-danger" /> |
+        <input type="submit" value="Excluir" class="btn btn-danger"/> |
+        @* <input type="submit" value="Editar Convites" class="btn btn-primary" formaction="/Convites/Index?ReuniaoID=@Model.ReuniaoID" />*@
         <a asp-controller="Reunioes" asp-action="Index">Voltar para a Lista</a>
+
     </form>
 </div>

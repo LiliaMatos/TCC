@@ -33,12 +33,6 @@
                 <label asp-for="SalaID" class="control-label"></label>
                 <select asp-for="SalaID" class="form-control" asp-items="ViewBag.SalaID"></select>
             </div>
-            @*<div class="form-group">
-            <label asp-for="ReuniaoSala" class="control-label"></label>
-            <input asp-for="ReuniaoSala" class="form-control" />
-            <span asp-validation-for="ReuniaoSala" class="text-danger"></span>
-        </div>*@
-
             <div class="form-group">
                 <input type="submit" value="Criar" class="btn btn-primary" />
             </div>
@@ -55,7 +49,6 @@
                     <span asp-validation-for="Convites[i].VisitanteID" class="text-danger"></span>
                 </div>
             }
-
         </div>
         *@
     </div>
@@ -63,6 +56,5 @@
 
 <div>
     <a asp-action="Index">Voltar para a Lista</a>
-    <a asp-action="CreateConvites">Adicionar Convites</a>
-</div>
+ </div>
 

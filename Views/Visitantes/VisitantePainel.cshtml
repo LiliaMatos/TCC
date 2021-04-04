@@ -1,0 +1,28 @@
+﻿@model PortariaInteligente.Models.Visitante
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<hr />
+<h3>Painel Visitante</h3>
+<hr />
+
+<h3>Meus Dados</h3>
+<br>
+<div class="form-group">
+    <input type="submit" value="Consultar" class="btn btn-primary" formaction="/Visitantes/Index" />  
+</div>
+<hr />
+
+<h3>Minhas Reuniões</h3>
+<br>
+<div class="form-group">
+    <input type="submit" value="Reuniões" class="btn btn-primary" formaction="/Reunioes/Index" /> 
+</div>
+<hr />
+
+
+<div>
+    <a asp-action="AutoCadastro">Voltar</a>
+</div>
