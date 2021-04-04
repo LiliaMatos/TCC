@@ -267,6 +267,25 @@ namespace PortariaInteligente.Controllers
             return View(await convites.ToListAsync());
         }
 
+        // GET: PainelRecepcao
+        public async Task<IActionResult> PainelRecepcao(string visitante, string visitado)
+        {
+
+            var convites = from m in _context.Convites.Include("Visitantes").Include("Reunioes").Include("Reunioes.Visitados")
+                           where m.Reunioes.ReuniaoData == DateTime.Today && m.LiberadoPortaria == true && m.LiberadoRecepcao == false select m;
+
+            if (!String.IsNullOrEmpty(visitante))
+            {
+                convites = convites.Where(s => s.Visitantes.VisitanteNome.Contains(visitante));
+            }
+            if (!String.IsNullOrEmpty(visitado))
+            {
+                convites = convites.Where(s => s.Reunioes.Visitados.VisitadoNome.Contains(visitado));
+            }
+
+            return View(await convites.ToListAsync());
+        }
+
         private bool ReuniaoExists(int id)
         {
             return _context.Reunioes.Any(e => e.ReuniaoID == id);
@@ -346,6 +365,31 @@ namespace PortariaInteligente.Controllers
             return View(convite);
         }
 
+        // GET: Reunioes/ExibirConviteRecepcao
+        public async Task<IActionResult> ExibirConviteRecepcao(string id)
+        {
+            var chaves = id.Split("_");
+            var visitanteID = int.Parse(chaves[0]);
+            var reuniaoID = int.Parse(chaves[1]);
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var convite = await _context.Convites
+                .Include(c => c.Reunioes)
+                .Include(c => c.Visitantes)
+                .FirstOrDefaultAsync(m => m.ReuniaoID == reuniaoID && m.VisitanteID == visitanteID && m.LiberadoPortaria == true);
+
+            if (convite == null)
+            {
+                return NotFound();
+            }
+
+            return View(convite);
+        }
+
 
         // POST: Reunioes/ConfirmarVisita
         public async Task<IActionResult> ConfirmarVisita(string id)
@@ -373,6 +417,34 @@ namespace PortariaInteligente.Controllers
             await _context.SaveChangesAsync();
 
             return RedirectToAction("PainelPortaria");
+        }
+
+        // POST: Reunioes/ConfirmarVisitaRecepcao
+        public async Task<IActionResult> ConfirmarVisitaRecepcao(string id)
+        {
+            var chaves = id.Split("_");
+            var visitanteID = int.Parse(chaves[0]);
+            var reuniaoID = int.Parse(chaves[1]);
+
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var convite = await _context.Convites
+                .Include(c => c.Reunioes)
+                .Include(c => c.Visitantes)
+                .FirstOrDefaultAsync(m => m.ReuniaoID == reuniaoID && m.VisitanteID == visitanteID);
+
+            if (convite == null)
+            {
+                return NotFound();
+            }
+
+            convite.LiberadoRecepcao = true;
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction("PainelRecepcao");
         }
     }
 }
