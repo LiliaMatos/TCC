@@ -67,6 +67,7 @@
                 <input asp-for="CarroPlaca" class="form-control" />
                 <span asp-validation-for="CarroPlaca" class="text-danger"></span>
             </div>
+            <hr />
 
 
             <h3>Termo de Uso</h3>
@@ -78,6 +79,7 @@
                     <label for="TermoDeUso">Li e aceito o Termos de Uso desta aplicação</label><br />
                 </p>
             </div>
+            <hr />
 
             <h3>Regras de Segurança</h3>
             <hr />
@@ -88,12 +90,24 @@
                     <label for="RegrasDeSeguranca">Li e aceito as regras de segurança</label><br />
                 </p>
             </div>
+            <hr />
 
+
+            <h3>LGPD</h3>
+            <hr />
+            <div>
+                <a asp-action="Lgpd">LGPD</a>
+                <p align="left">
+                    <input type="radio" id="Lgpd" name="Lgpd">
+                    <label for="Lgpd">Li e aceito LGPD</label><br />
+                </p>
+            </div>
+            <hr />
 
             <div class="form-group">
                 <input type="submit" value="Criar" class="btn btn-primary" />
             </div>
-            
+
             <div>
                 <a asp-action="Index">Voltar para a Lista</a>
             </div>
