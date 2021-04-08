@@ -66,6 +66,7 @@ namespace PortariaInteligente.Controllers
         {
             if (ModelState.IsValid)
             {
+                visitado.Papeis = Papel.Visitado;
                 _context.Add(visitado);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -105,6 +106,7 @@ namespace PortariaInteligente.Controllers
             {
                 try
                 {
+                    visitado.Papeis = Papel.Visitado;
                     _context.Update(visitado);
                     await _context.SaveChangesAsync();
                 }
