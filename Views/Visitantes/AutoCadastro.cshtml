@@ -27,10 +27,7 @@
                 <label asp-for="VisitanteCel" class="control-label"></label>
                 <input asp-for="VisitanteCel"
                        class="form-control"
-                       oninput="mask(this, mphone);"
-                       onkeyup="mask(this, mphone);"
-                       onkeypress="mask(this, mphone);"
-                       onblur="mask(this, mphone);" />
+                       id="celular" />
                 <span asp-validation-for="VisitanteCel" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -106,31 +103,24 @@
     </div>
 </div>
 
-<script>
-    function mask(o, f) {
-        setTimeout(function () {
-            var v = f(o.value);
-            if (v != o.value) {
-                o.value = v;
-            }
-        }, 1);
-    }
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+    document.getElementById('celular').addEventListener('input', function (e) {
+        var aux = e.target.value.replace(/\D/g, '').match(/(\d{0,2})(\d{0,5})(\d{0,4})/);
+        e.target.value = !aux[2] ? aux[1] : '(' + aux[1] + ') ' + aux[2] + (aux[3] ? '-' + aux[3] : '');
+    });
 
-    function mphone(v) {
-        var r = v.replace(/\D/g, "");
-        r = r.replace(/^0/, "");
-        if (r.length > 10) {
-            // 11+ digits. Format as 5+4.
-            r = r.replace(/^(\d\d)(\d{5})(\d{4}).*/, "($1) $2-$3");
-        }
-        else if (r.length > 5) {
-            // 6..10 digits. Format as 4+4
-            r = r.replace(/^(\d\d)(\d{4})(\d{0,4}).*/, "($1) $2-$3");
-        }
-        else if (r.length > 2) {
-            // 3..5 digits. Add (0XX..)
-            r = r.replace(/^(\d\d)(\d{0,5})/, "($1) $2");
-        }
-        return r;
-    }
+    $(function () {
+        // desativa por default
+        $('form input:submit').prop('disabled', true);
+
+        // controla se tem no mínimo 3 escolhidos para ativar
+        $('form').on("click", 'input[type="radio"]', function (e) {
+            if ($("form input:radio:checked").length >= 3) {
+                $('form input:submit').prop('disabled', false);
+            } else {
+                $('form input:submit').prop('disabled', true);
+            }
+        });
+    })
 </script>
